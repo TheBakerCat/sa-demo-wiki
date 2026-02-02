@@ -7,7 +7,6 @@
 .vitepress/dist
 .vitepress/cache
 .idea
-.github
 .obsidian
 # Whether you use PnP or not, the node_modules folder is often used to store
 # build artifacts that should be gitignored
