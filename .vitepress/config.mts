@@ -6,6 +6,7 @@ export default defineConfig({
   
   title: "09.02.06 Демо Wiki",
   description: "Простенькая wiki по выполнению БУ/ПУ ДЭ 09.02.06",
+  base: "/sa-demo-wiki/",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
