@@ -28,7 +28,6 @@ export default defineConfig({
         items: 
         [
           { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'godia', link: '/godia' },
           { text: 'Runtime API Examples', link: '/api-examples' }
         ]
       },
@@ -37,7 +36,6 @@ export default defineConfig({
         items: 
         [
           { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'godia', link: '/godia' },
           { text: 'Runtime API Examples', link: '/api-examples' }
         ]
       }
