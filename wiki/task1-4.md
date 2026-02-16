@@ -40,38 +40,7 @@ ipv4address
 systemctl restart network
 ~~~~
 
-## 4.2 Настройка openvswitch
-Установка openvswitch
-~~~~
-apt-get update && apt-get install openvswitch
-~~~~
-
-~~~~
-systemctl enable --now openvswitch
-~~~~
-
-идем к файлу /etc/net/iface/default/options и находим строчку OVS_REMOVE=yes и меняем yes на no
-
-~~~~
-echo "8021q" | tee -a /etc/modules
-~~~~
-
-~~~~
-ovs-vsctl add-port HQ-SW "интерфейс" trunk=100,200,999
-~~~~
-
-для проверки используем:
-~~~~
-ovs-vsctl show 
-~~~~
-
-Проверка работаспособности 
-~~~~
-ping ya.ru -I "ip адрес vlan"
-~~~~
-Если есть ping, значит серверная часть сделана правильно. 
-
-переходим на клиентскую систему
+## 4.2
 
 создаем директории для vlan пример ens18.100
 для ускорения конфигурации можно скопировать конфиг из ens18
