@@ -12,15 +12,18 @@ DNS сервер(77.88.8.7, 77.88.8.3 или другие)
 ```
 apt-get install bind bind-utils
 ```
-Настраиваем /etc/bind/options.conf (или в /var/lib/bind/etc/bind/options.conf, если первого пути нет)
+Настраиваем /var/lib/bind/etc/bind/options.conf 
+ /etc/bind/options.conf
 Потребуеться дописать или раскоментить следуйшщие
 (не забывайте что после почти ВСЕГО нужно ;)
 ```
-listen-on { };
+listen-on { 127.0.0.1; 192.168.vlan.0/маска от HQ-CLI (если не работает "ip адрес HQ-CLI" без маски) };
 
-forwarders { };
+forwarders { 8.8.8.8; };
 
 recursion yes;
 
-allow-query { };
+allow-query { 192.168.vlan.0/маска от HQ-CLI; 127.0.0.1; };
+
+dnssec-validation no;
 ```
