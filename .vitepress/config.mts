@@ -20,7 +20,8 @@ export default defineConfig({
         text: 'Модуль 1',
         items: 
         [
-          { text: 'task1-1', link: '/task1-1' }
+          { text: 'task1-1', link: '/task1-1' },
+          { text: 'task1-2', link: '/task1-2' }
         ]
       },
       {
