@@ -5,3 +5,34 @@
 Интернет
 
 ## 8.1 
+Устанавливаем iptables
+
+```
+apt-get install iptables
+```
+
+Ставим его на автозагрузку через
+
+```
+systemctl enable iptables
+```
+
+Настраиваем iptables
+
+```
+iptables -t nat -A POSTROUTING -o "интерфейс, который направлен в интернет, обычно ens18" -j MASQUERADE
+```
+
+<!--  потом прописываешь команду , потом сохроняешься всю эту байду с помошью -->
+
+Сохраняем настройки 
+
+```
+iptables-save >> /etc/sysconfig/iptables
+```
+
+Перезапускаем демон iptables, чтоб применить настройки
+
+```
+systemctl restart iptables.
+```
