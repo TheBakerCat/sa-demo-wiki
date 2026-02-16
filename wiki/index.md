@@ -20,6 +20,6 @@ features:
   - title: Feature B
     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
   - title: Feature C
-     link: /api-examples
+     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 ---
 
