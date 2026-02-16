@@ -63,9 +63,9 @@ ip ospf network point-to-point
 
 ~~~~
 network "интерфейс GRE с вашей стороны вместе с маской" area 0
-network "ip сети vlan 100" area 0
-network "ip сети vlan 200" area 0
-network "ip сети vlan 999" area 0
+network "ip сети vlan 100 вместе с маской" area 0
+network "ip сети vlan 200 вместе с маской" area 0
+network "ip сети vlan 999 вместе с маской" area 0
 ~~~~
 
 ~~~~
