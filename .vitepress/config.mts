@@ -21,7 +21,16 @@ export default defineConfig({
         items: 
         [
           { text: 'task1-1', link: '/task1-1' },
-          { text: 'task1-2', link: '/task1-2' }
+          { text: 'task1-2', link: '/task1-2' },
+          { text: 'task1-3', link: '/task1-3' },
+          { text: 'task1-4', link: '/task1-4' },
+          { text: 'task1-5', link: '/task1-5' },
+          { text: 'task1-6', link: '/task1-6' },
+          { text: 'task1-7', link: '/task1-7' },
+          { text: 'task1-8', link: '/task1-8' },
+          { text: 'task1-9', link: '/task1-9' },
+          { text: 'task1-10', link: '/task1-10' },
+          { text: 'task1-11', link: '/task1-11' },
         ]
       },
       {
