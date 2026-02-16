@@ -5,10 +5,10 @@ layout: home
 hero:
   name: "09.02.06 Демо Wiki"
   text: "Простенькая wiki по выполнению БУ/ПУ ДЭ 09.02.06"
-  tagline: My great project tagline
+  tagline: Решение vvvvvvvvv
   actions:
     - theme: brand
-      text: Модуль 1
+      text: Модуль 1 смотреть онлайн без смс и регистрации
       link: /task1-1
 
     - theme: alt
