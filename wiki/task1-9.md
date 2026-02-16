@@ -17,3 +17,27 @@
 • Сведения о настройке протокола занесите в отчёт
 
 ## 9.1
+
+установка 
+~~~~
+apt-get update && apt0get install dhcpd
+~~~~
+
+конф файл 
+
+/etc/dhcp/dhcpd.conf
+
+
+sub-net 192.168."vlan".0 netmask 255.255.255.x(посмотрите какая у вас маска при такой записи, если получится табличку прикреплю)
+    options routers "ip vlan"
+    options subnet-mask совпадает с маской выше
+    X
+    X
+    options domain-name-servers "ip vlan"
+    range dynamic-bootp 192.168.vlan.2 192.168.vlan.10
+    x
+    x
+    
+~~~~
+systemctl restart dhcpd
+~~~~
