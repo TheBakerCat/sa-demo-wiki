@@ -21,6 +21,7 @@ export default defineConfig({
         items: 
         [
           { text: 'Markdown Examples', link: '/markdown-examples' },
+          { text: 'task1', link: '/task1' },
           { text: 'godia', link: '/godia' },
           { text: 'Runtime API Examples', link: '/api-examples' }
         ]
