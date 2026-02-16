@@ -12,7 +12,7 @@ DNS сервер(77.88.8.7, 77.88.8.3 или другие)
 ```
 apt-get install bind bind-utils
 ```
-Настраиваем /var/lib/bind/etc/options.conf
+Настраиваем /etc/bind/options.conf (или в /var/lib/bind/etc/bind/options.conf, если первого пути нет)
 Потребуеться дописать или раскоментить следуйшщие
 (не забывайте что после почти ВСЕГО нужно ;)
 ```
