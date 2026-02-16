@@ -16,8 +16,18 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Examples',
-        items: [
+        text: 'Модуль 1',
+        items: 
+        [
+          { text: 'Markdown Examples', link: '/markdown-examples' },
+          { text: 'godia', link: '/godia' },
+          { text: 'Runtime API Examples', link: '/api-examples' }
+        ]
+      },
+      {
+        text: 'Модуль 1',
+        items: 
+        [
           { text: 'Markdown Examples', link: '/markdown-examples' },
           { text: 'godia', link: '/godia' },
           { text: 'Runtime API Examples', link: '/api-examples' }
