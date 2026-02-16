@@ -14,3 +14,82 @@ Cети одного офиса должны быть доступны из др
 • Сведения о настройке и защите протокола занесите в отчёт.
 
 ## 7.1 Настройка ffr (ospf)
+Установка 
+~~~~
+apt-get update && apt-get install ffr
+~~~~
+
+~~~~
+vim /etc/frr/daemons
+~~~~
+
+находим ospfd=no заменяем no на yes
+
+~~~~
+systemctl enable --now frr
+~~~~
+
+~~~~
+vtysh
+~~~~
+
+~~~~
+conf t
+~~~~
+
+~~~~
+router ospf
+~~~~
+
+~~~~
+ospf router-id 1.1.1.1
+~~~~
+
+~~~~
+int "интерфейс"
+~~~~
+
+~~~~
+ip ospf passive
+~~~~
+
+~~~~
+int "GRE"
+~~~~
+
+~~~~
+ip ospf network point-to-point  
+~~~~
+
+~~~~
+network "интерфейс GRE с вашей стороны вместе с маской" area 0
+network "ip сети vlan 100" area 0
+network "ip сети vlan 200" area 0
+network "ip сети vlan 999" area 0
+~~~~
+
+~~~~
+do wr
+~~~~
+
+~~~~
+end
+~~~~
+
+~~~~
+exit
+~~~~
+
+
+
+
+
+
+
+
+
+
+
+
+
+
