@@ -13,4 +13,72 @@ Cети одного офиса должны быть доступны из др
 
 • Сведения о настройке и защите протокола занесите в отчёт.
 
-## 7.1 
+## 7.1 Настройка openvswitch
+
+Установка openvswitch
+~~~~
+apt-get update && apt-get install openvswitch
+~~~~
+
+~~~~
+systemctl enable --now openvswitch
+~~~~
+
+идем к файлу /etc/net/iface/default/options и находим строчку OVS_REMOVE=yes и меняем yes на no
+
+~~~~
+echo "8021q" | tee -a /etc/modules
+~~~~
+
+~~~~
+ovs-vsctl add-port HQ-SW "интерфейс" trunk=100,200,999
+~~~~
+
+для проверки используем:
+~~~~
+ovs-vsctl show 
+~~~~
+
+Проверка работаспособности 
+~~~~
+ping ya.ru -I "ip адрес vlan"
+~~~~
+Если есть ping, значит серверная часть сделана правильно. 
+
+переходим на клиентскую систему
+
+создаем директории для vlan пример ens18.100
+для ускорения конфигурации можно скопировать конфиг из ens18
+
+options
+~~~~
+TYPE=vlan
+VID=100 или 200
+HOST="интерфейс, который ведет к серверу"
+BOOTPROTO=static
+CONFIG_IPV4=yes
+~~~~
+
+ipv4address
+~~~~
+192.168."номер vlan"."номер машины"/"маска по заданию"
+~~~~
+
+ipv4route
+~~~~
+default via "ip адрес нужного vlan на стороне openvswitch"
+~~~~
+
+resolv.conf
+~~~~
+nameserver 8.8.8.8
+~~~~
+
+~~~~
+systemctl restart network
+~~~~
+
+Проверяем:
+~~~~
+ping ya.ru
+~~~~
