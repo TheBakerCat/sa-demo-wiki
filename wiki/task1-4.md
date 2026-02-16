@@ -14,7 +14,7 @@
 
 ## 4.1 Создание Vlan
 
-HQ-SW/options или BR-SW/options
+HQ-SW/options
 
 options
 ~~~
@@ -26,7 +26,7 @@ vlan
 options
 ~~~
 TYPE=ovsport
-BRIDGE=HQ-SW или BR-SW
+BRIDGE=HQ-SW
 VID=100 или 200 или 999
 BOOTPROTO=static
 ~~~
