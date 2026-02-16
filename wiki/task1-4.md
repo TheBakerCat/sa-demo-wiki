@@ -14,4 +14,26 @@
 
 ## 4.1 Создание Vlan
 
+HQ-SW/options или BR-SW/options
+
+options
+~~~
+TYPE=ovsbr
+~~~
+
+vlan
+
+options
+~~~
+TYPE=ovsport
+BRIDGE=HQ-SW или BR-SW
+VID=100 или 200 или 999
+BOOTPROTO=static
+~~~
+
+ipv4address
+~~~
+192.168."номер vlan"."номер машины"/"маска по заданию"
+~~~
+
 ## 4.2 Настройка openvswitch
