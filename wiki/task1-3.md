@@ -51,6 +51,3 @@ usermod -aG wheel net_admin
 ```
 net_admin ALL=(ALL) NOPASSWD: ALL
 ```
-
-• При настройке ОС отличных от Linux пользователь должен обладать
-максимальными привилегиями.
