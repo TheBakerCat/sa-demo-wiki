@@ -25,7 +25,7 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Модуль 1',
+        text: 'Модуль 2',
         items: 
         [
           { text: 'Markdown Examples', link: '/markdown-examples' },
