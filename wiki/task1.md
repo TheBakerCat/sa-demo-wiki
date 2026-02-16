@@ -1,85 +1,27 @@
-# Markdown Extension Examples
+# 1. Произведите базовую настройку устройств:
 
-This page demonstrates some of the built-in markdown extensions provided by VitePress.
+## 1.1 Настройте имена устройств согласно топологии. 
+Используйте полное доменное имя
 
-## Syntax Highlighting
-
-VitePress provides Syntax Highlighting powered by [Shiki](https://github.com/shikijs/shiki), with additional features like line-highlighting:
-
-**Input**
-
-````md
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
 ```
-````
-
-**Output**
-
-```js{4}
-export default {
-  data () {
-    return {
-      msg: 'Highlighted!'
-    }
-  }
-}
+hostnamectl set-hostname "название машины"
 ```
 
-## Custom Containers
+## 1.2 На всех устройствах необходимо сконфигурировать IPv4:
+IP-адрес должен быть из приватного диапазона, в случае, если сеть
+локальная, согласно RFC1918
 
-**Input**
+• Локальная сеть в сторону HQ-SRV(VLAN 100) должна вмещать не
+более 32 адресов
 
-```md
-::: info
-This is an info box.
-:::
+• Локальная сеть в сторону HQ-CLI(VLAN 200) должна вмещать не
+менее 16 адресов
 
-::: tip
-This is a tip.
-:::
+• Локальная сеть для управления(VLAN 999) должна вмещать не
+более 8 адресов
 
-::: warning
-This is a warning.
-:::
+• Локальная сеть в сторону BR-SRV должна вмещать не более 16
+адресов
 
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-```
-
-**Output**
-
-::: info
-This is an info box.
-:::
-
-::: tip
-This is a tip.
-:::
-
-::: warning
-This is a warning.
-:::
-
-::: danger
-This is a dangerous warning.
-:::
-
-::: details
-This is a details block.
-:::
-
-## More
-
-Check out the documentation for the [full list of markdown extensions](https://vitepress.dev/guide/markdown).
+Сведения об адресах занесите в таблицу 2, в качестве примера
+используйте Прил_3_О1_КОД 09.02.06-1-2026-М1
