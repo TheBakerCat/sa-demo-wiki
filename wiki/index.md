@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: Модуль 1 смотреть онлайн без смс и регистрации
-      link: /task1-1
+      link: /module1/task1-1
 
     - theme: alt
       text: API Examples
