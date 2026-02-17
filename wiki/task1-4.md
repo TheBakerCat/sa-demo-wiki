@@ -14,7 +14,7 @@
 
 ## 4.1 Создание Vlan
 
-HQ-SW/options
+/etc/net/iface/HQ-SW/options
 
 options
 ~~~
