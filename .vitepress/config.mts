@@ -20,25 +20,33 @@ export default defineConfig({
         text: 'Модуль 1',
         items: 
         [
-          { text: 'task1-1', link: '/task1-1' },
-          { text: 'task1-2', link: '/task1-2' },
-          { text: 'task1-3', link: '/task1-3' },
-          { text: 'task1-4', link: '/task1-4' },
-          { text: 'task1-5', link: '/task1-5' },
-          { text: 'task1-6', link: '/task1-6' },
-          { text: 'task1-7', link: '/task1-7' },
-          { text: 'task1-8', link: '/task1-8' },
-          { text: 'task1-9', link: '/task1-9' },
-          { text: 'task1-10', link: '/task1-10' },
-          { text: 'task1-11', link: '/task1-11' },
+          { text: 'Задание 1', link: '/module1/task1-1' },
+          { text: 'Задание 2', link: '/module1/task1-2' },
+          { text: 'Задание 3', link: '/module1/task1-3' },
+          { text: 'Задание 4', link: '/module1/task1-4' },
+          { text: 'Задание 5', link: '/module1/task1-5' },
+          { text: 'Задание 6', link: '/module1/task1-6' },
+          { text: 'Задание 7', link: '/module1/task1-7' },
+          { text: 'Задание 8', link: '/module1/task1-8' },
+          { text: 'Задание 9', link: '/module1/task1-9' },
+          { text: 'Задание 10', link: '/module1/task1-10' },
+          { text: 'Задание 11', link: '/module1/task1-11' },
         ]
       },
       {
         text: 'Модуль 2',
-        items: 
-        [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+        items: [
+          { text: 'Задание 1', link: '/module2/task2-1' },
+          { text: 'Задание 2', link: '/module2/task2-2' },
+          { text: 'Задание 3', link: '/module2/task2-3' },
+          { text: 'Задание 4', link: '/module2/task2-4' },
+          { text: 'Задание 5', link: '/module2/task2-5' },
+          { text: 'Задание 6', link: '/module2/task2-6' },
+          { text: 'Задание 7', link: '/module2/task2-7' },
+          { text: 'Задание 8', link: '/module2/task2-8' },
+          { text: 'Задание 9', link: '/module2/task2-9' },
+          { text: 'Задание 10', link: '/module2/task2-10' },
+          { text: 'Задание 11', link: '/module2/task2-11' },
         ]
       },
       {
