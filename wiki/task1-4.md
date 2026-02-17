@@ -23,6 +23,8 @@ TYPE=ovsbr
 
 vlan
 
+/etc/net/iface/vlan
+
 options
 ~~~
 TYPE=ovsport
