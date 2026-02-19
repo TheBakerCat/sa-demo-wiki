@@ -23,27 +23,45 @@ apt-get update && apt-get install ffr
 vim /etc/frr/daemons
 ~~~~
 
-находим ospfd=no заменяем no на yes
+В файле находим ospfd=no, заменяем на ospfd=yes
+
+Запускаем и ставим на автозагрузку frr
 
 ~~~~
 systemctl enable --now frr
 ~~~~
 
+Заходим в терминал управления frr - vtysh (Расшифровываетсья как Virtual TeletYpe SHell)
+
 ~~~~
 vtysh
 ~~~~
+
+Переходим в режим конфигурации
 
 ~~~~
 conf t
 ~~~~
 
+Переходим в режим конфигурации виртуального роутера ospf
+
 ~~~~
 router ospf
 ~~~~
 
+На одном RTR прописываем:
+
 ~~~~
 ospf router-id 1.1.1.1
 ~~~~
+
+На одном RTR прописываем:
+
+~~~~
+ospf router-id 2.2.2.2
+~~~~
+
+Далее на обоих интерфейсах прописываем:
 
 ~~~~
 int "интерфейс"
