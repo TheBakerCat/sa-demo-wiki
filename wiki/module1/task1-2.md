@@ -62,12 +62,6 @@ nameserver 8.8.8.8
 apt-get install iptables
 ```
 
-Ставим его на автозагрузку через
-
-```
-systemctl enable iptables
-```
-
 Настраиваем iptables
 
 ```
@@ -80,6 +74,11 @@ iptables -t nat -A POSTROUTING -o "интерфейс, который напра
 
 ```
 iptables-save >> /etc/sysconfig/iptables
+```
+Ставим его на автозагрузку через
+
+```
+systemctl enable iptables
 ```
 
 Перезапускаем демон iptables, чтоб применить настройки
