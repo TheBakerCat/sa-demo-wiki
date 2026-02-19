@@ -85,5 +85,5 @@ iptables-save >> /etc/sysconfig/iptables
 Перезапускаем демон iptables, чтоб применить настройки
 
 ```
-systemctl restart iptables.
+systemctl restart iptables
 ```
