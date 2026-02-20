@@ -13,6 +13,7 @@
 • Сведения о настройке коммутации внесите в отчёт
 
 ## 4.1 Создание Vlan
+HQ-RTR
 
 /etc/net/iface/HQ-SW/options
 
@@ -40,6 +41,37 @@ ipv4address
 
 ~~~~
 systemctl restart network
+~~~~
+
+Клиент машина 
+
+/etc/net/iface/vlan
+
+options 
+~~~~
+BOOTPROTO=static
+TYPE=vlan
+VID="номер vlan"
+HOST="ens18"
+CONFIG_IPV4=yes
+DISABLED=no
+~~~~
+
+ipv4address
+
+~~~~
+ip адрес клиент машины /маска
+~~~~
+
+ipv4route
+~~~~
+default via "ip vlan на HQ-RTR
+~~~~
+
+resolv.conf
+~~~~
+nameserver 8.8.8.8
+anmeserver 1.1.1.1
 ~~~~
 
 Полезные материалы:
