@@ -86,3 +86,12 @@ systemctl enable iptables
 ```
 systemctl restart iptables
 ```
+
+Полезные материалы:
+~~~~
+https://www.altlinux.org/Etcnet
+~~~~
+
+
+
+
