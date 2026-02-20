@@ -87,6 +87,12 @@ systemctl enable iptables
 systemctl restart iptables
 ```
 
+Настраиваем файл /etc/net/sysctl.conf
+```
+Заменяем net.ipv4.ip_forward = 0 на net.ipv4.ip_forward = 1
+```
+
+
 Полезные материалы:
 ~~~~
 https://www.altlinux.org/Etcnet
