@@ -45,3 +45,15 @@ AllowUsers sshuser
 touch "название"
 ```
 Используя текстовый редактор прописываем Authorized access only
+
+Полезные материалы:
+~~~~
+https://www.altlinux.org/SSH
+~~~~
+
+
+
+
+
+
+
