@@ -71,7 +71,7 @@ default via "ip vlan на HQ-RTR
 resolv.conf
 ~~~~
 nameserver 8.8.8.8
-anmeserver 1.1.1.1
+nameserver 1.1.1.1
 ~~~~
 
 Полезные материалы:
@@ -80,7 +80,7 @@ https://www.altlinux.org/Etcnet
 ~~~~
 
 ## 4.2Настройка openvswitch
-
+BR-RTR
 Установка openvswitch
 ~~~~
 apt-get update && apt-get install openvswitch
