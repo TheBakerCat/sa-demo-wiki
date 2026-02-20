@@ -63,9 +63,9 @@ apt-get install iptables
 ```
 
 Настраиваем iptables
-
+<!-- "интерфейс, который направлен в интернет, обычно" -->
 ```
-iptables -t nat -A POSTROUTING -o "интерфейс, который направлен в интернет, обычно ens18" -j MASQUERADE
+iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE
 ```
 
 <!--  потом прописываешь команду , потом сохроняешься всю эту байду с помошью -->
