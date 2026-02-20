@@ -42,6 +42,11 @@ ipv4address
 systemctl restart network
 ~~~~
 
+Полезные материалы:
+~~~~
+https://www.altlinux.org/Etcnet
+~~~~
+
 ## 4.2Настройка openvswitch
 
 Установка openvswitch
@@ -148,6 +153,9 @@ systemctl restart network
 ping ya.ru
 ~~~~
 
-
-
+Полезные материалы:
+~~~~
+https://www.altlinux.org/Etcnet/openvswitch
+~~~~
+https://www.altlinux.org/Etcnet/openvswitch
 
