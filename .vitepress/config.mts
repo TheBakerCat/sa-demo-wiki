@@ -22,7 +22,7 @@ export default defineConfig({
         [
           { text: 'Задание 1', link: '/other/internet_guide' }
         ]
-      }
+      },
       
       {
         text: 'Модуль 1',
