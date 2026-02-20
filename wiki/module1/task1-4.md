@@ -157,5 +157,6 @@ ping ya.ru
 ~~~~
 https://www.altlinux.org/Etcnet/openvswitch
 ~~~~
-https://www.altlinux.org/Etcnet/openvswitch
+
+
 
