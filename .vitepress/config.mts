@@ -15,14 +15,15 @@ export default defineConfig({
     ],
 
     sidebar: 
-[
+  [
       {
         text: 'Полезные материалы',
         items: 
         [
           { text: 'Задание 1', link: '/other/internet_guide' }
         ]
-      [
+      }
+      
       {
         text: 'Модуль 1',
         items: 
