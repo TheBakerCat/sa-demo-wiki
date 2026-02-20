@@ -72,8 +72,6 @@ default via "ip vlan на HQ-RTR
 resolv.conf
 ~~~~
 nameserver 8.8.8.8
-
-nameserver 1.1.1.1
 ~~~~
 
 Полезные материалы:
