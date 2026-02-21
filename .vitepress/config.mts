@@ -20,7 +20,7 @@ export default defineConfig({
         text: 'Полезные материалы',
         items: 
         [
-          { text: 'Задание 1', link: '/other/internet_guide' }
+          { text: 'Настройка интернета/связоности', link: '/other/internet_guide' }
         ]
       },
       
