@@ -7,3 +7,11 @@ HQ-CLI, HQ-RTR и BR-RTR
 
 • Все указанные машины должны без предупреждений и ошибок отвечать
 pong на команду ping в ansible посланную с BR-SRV.
+
+
+### 5.1
+
+Доп материалы:
+~~~~
+https://labex.io/ru/tutorials/ansible-ansible-installation-on-ubuntu-67172
+~~~~
