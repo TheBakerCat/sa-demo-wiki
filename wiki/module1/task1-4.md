@@ -15,36 +15,71 @@
 ## 4.1 Создание Vlan
 
 HQ-RTR
+Создаем следующие файлы\директории:
 
-/etc/net/iface/HQ-SW/options
-
-options
-~~~
+```shell
+#options
+#etc/net/iface/HQ-SW/options
 TYPE=ovsbr
-~~~
+```
 
-vlan
+vlan100
 
-/etc/net/iface/vlan
-
-options
-~~~
+```shell
+#options
+#/etc/net/iface/vlan100/options
 TYPE=ovsport
 BRIDGE=HQ-SW
-VID=100 или 200 или 999
+VID=100
 BOOTPROTO=static
-~~~
+```
 
-ipv4address
-~~~
-192.168."номер vlan"."номер машины"/"маска по заданию"
-~~~
+```shell
+#ipv4address
+#/etc/net/iface/vlan100/ipv4address
+192.168.100.1/28
+```
+
+vlan200
+
+```shell
+#options
+#/etc/net/iface/vlan200/options
+TYPE=ovsport
+BRIDGE=HQ-SW
+VID=200
+BOOTPROTO=static
+```
+
+```shell
+#ipv4address
+#/etc/net/iface/vlan200/ipv4address
+192.168.200.1/29
+```
+
+vlan999
+
+```shell
+#options
+#/etc/net/iface/vlan999/options
+TYPE=ovsport
+BRIDGE=HQ-SW
+VID=999
+BOOTPROTO=static
+```
+
+```shell
+#ipv4address
+#/etc/net/iface/vlan999/ipv4address
+192.168.99.1/28
+```
+
 
 ~~~~
 systemctl restart network
 ~~~~
 
-Клиент машина 
+###4.2 Клиент машина 
 
 /etc/net/iface/vlan
 
