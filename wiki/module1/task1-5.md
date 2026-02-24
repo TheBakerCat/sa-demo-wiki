@@ -71,9 +71,11 @@ Authorized access only
 __Повторите те же действия на машине BR-SRV по аналогии__
 
 Полезные материалы:
-~~~~
-https://www.altlinux.org/SSH
-~~~~
+[https://www.altlinux.org/SSH][1]
+
+
+[1]: <https://www.altlinux.org/SSH>
+
 
 
 
