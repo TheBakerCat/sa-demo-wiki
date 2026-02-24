@@ -77,9 +77,9 @@ BOOTPROTO=static
 ```
 
 Проверяем создались ли vlan
-~~~~
+```shell
 systemctl restart network
-~~~~
+```
 
 ## 4.2 Клиент машины HQ-SRV  и HQ-CLI
 
@@ -91,8 +91,8 @@ HQ-SRV
 
 BOOTPROTO=static
 TYPE=vlan
-VID="номер vlan"
-HOST="ens18"
+VID=100
+HOST=`ens18`
 CONFIG_IPV4=yes
 DISABLED=no
 ```
@@ -159,108 +159,35 @@ nameserver 8.8.8.8
 ## 4.2Настройка openvswitch
 BR-RTR
 Установка openvswitch
-~~~~
+```shell
 apt-get update && apt-get install openvswitch
-~~~~
+```
 
-~~~~
+Помещаем в автозагрузки
+```shell
 systemctl enable --now openvswitch
-~~~~
+```
 
-идем к файлу /etc/net/iface/default/options и находим строчку OVS_REMOVE=yes и меняем yes на no
+идем к файлу `/etc/net/iface/default/options` и находим строчку `OVS_REMOVE=yes` и меняем yes на no
 
-~~~~
+```shell
 echo "8021q" | tee -a /etc/modules
-~~~~
+```
 
-~~~~
-ovs-vsctl add-port HQ-SW "интерфейс" trunk=100,200,999
-~~~~
+
+```shell
+ovs-vsctl add-port HQ-SW ens19 trunk=100,200,999
+```
 
 для проверки используем:
-~~~~
+```shell
 ovs-vsctl show 
-~~~~
+```
 
 Проверка работаспособности 
-~~~~
+```shell
 ping ya.ru -I "ip адрес vlan"
-~~~~
-Если есть ping, значит серверная часть сделана правильно. 
-
-переходим на клиентскую систему
-
-создаем директории для vlan пример ens18.100
-для ускорения конфигурации можно скопировать конфиг из ens18
-
-options
-~~~~
-TYPE=vlan
-VID=100 или 200
-HOST="интерфейс, который ведет к серверу"
-BOOTPROTO=static
-CONFIG_IPV4=yes
-~~~~
-
-ipv4address
-~~~~
-192.168."номер vlan"."номер машины"/"маска по заданию"
-~~~~
-
-ipv4route
-~~~~
-default via "ip адрес нужного vlan на стороне openvswitch"
-~~~~
-
-resolv.conf
-~~~~
-nameserver 8.8.8.8
-~~~~
-
-~~~~
-systemctl restart network
-~~~~
-
-Проверяем:
-~~~~
-ping ya.ru
-~~~~
-
-создаем директории для vlan пример ens18.100
-для ускорения конфигурации можно скопировать конфиг из ens18
-
-options
-~~~~
-TYPE=vlan
-VID=100 или 200
-HOST="интерфейс, который ведет к серверу"
-BOOTPROTO=static
-CONFIG_IPV4=yes
-~~~~
-
-ipv4address
-~~~~
-192.168."номер vlan"."номер машины"/"маска по заданию"
-~~~~
-
-ipv4route
-~~~~
-default via "ip адрес нужного vlan на стороне openvswitch"
-~~~~
-
-resolv.conf
-~~~~
-nameserver 8.8.8.8
-~~~~
-
-~~~~
-systemctl restart network
-~~~~
-
-Проверяем:
-~~~~
-ping ya.ru
-~~~~
+```
 
 Полезные материалы:
 [https://www.altlinux.org/Etcnet/openvswitch][2]
