@@ -186,9 +186,8 @@ ping ya.ru
 ~~~~
 
 Полезные материалы:
-~~~~
-https://www.altlinux.org/Etcnet/openvswitch
-~~~~
+[https://www.altlinux.org/Etcnet/openvswitch][1]
 
+[1]: <https://www.altlinux.org/Etcnet/openvswitch>
 
 
