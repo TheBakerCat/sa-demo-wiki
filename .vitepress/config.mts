@@ -7,10 +7,12 @@ export default defineConfig({
   title: "09.02.06 Демо Wiki",
   description: "Простенькая wiki по выполнению БУ/ПУ ДЭ 09.02.06",
   base: "/sa-demo-wiki/",
+  markdown: {
+    math: true,
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
      // { text: 'Examples', link: '/markdown-examples' }
     ],
 
@@ -20,7 +22,9 @@ export default defineConfig({
         text: 'Полезные материалы',
         items: 
         [
-          { text: 'Настройка интернета/связоности', link: '/other/internet_guide' }
+          { text: 'Настройка интернета/связоности', link: '/other/internet_guide' },
+          { text: 'О масках подсети', link: '/other/about_netmasks' },
+          { text: 'Таблица адресации', link: '/appendix/ip_table' }
         ]
       },
       
@@ -61,14 +65,22 @@ export default defineConfig({
         text: 'Модуль 3',
         items: 
         [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Задание 1', link: '/module3/task3-1' },
+          { text: 'Задание 2', link: '/module3/task3-2' },
+          { text: 'Задание 3', link: '/module3/task3-3' },
+          { text: 'Задание 4', link: '/module3/task3-4' },
+          { text: 'Задание 5', link: '/module3/task3-5' },
+          { text: 'Задание 6', link: '/module3/task3-6' },
+          { text: 'Задание 7', link: '/module3/task3-7' },
+          { text: 'Задание 8', link: '/module3/task3-8' },
+          { text: 'Задание 9', link: '/module3/task3-9' },
+          { text: 'Задание 10', link: '/module3/task3-10' },
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/thebakercat/sa-demo-wiki' }
     ]
   }
 })

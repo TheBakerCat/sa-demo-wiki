@@ -5,21 +5,15 @@ layout: home
 hero:
   name: "09.02.06 Демо Wiki"
   text: "Простенькая wiki по выполнению БУ/ПУ ДЭ 09.02.06"
-  tagline: Решение vvvvvvvvv
   actions:
     - theme: brand
-      text: Модуль 1 смотреть онлайн без смс и регистрации
+      text: Модуль 1
       link: /module1/task1-1
-
     - theme: alt
-      text: API Examples
-      link: /api-examples
-features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+      text: Модуль 2
+      link: /module2/task2-1
+    - theme: alt
+      text: Модуль 3
+      link: /module3/task1-1
 ---
 

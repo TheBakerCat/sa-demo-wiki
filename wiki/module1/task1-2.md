@@ -1,7 +1,8 @@
 # 2. Настройте доступ к сети Интернет, на маршрутизаторе ISP:
 
-Настройте адресацию на интерфейсах:
+Настройте адресацию на интерфейсах
 
+::: details
 • Интерфейс, подключенный к магистральному провайдеру, получает
 адрес по DHCP
 
@@ -10,94 +11,271 @@
 • Настройте интерфейс, в сторону HQ-RTR, интерфейс подключен к сети
 172.16.1.0/28
 
-
 • Настройте интерфейс, в сторону BR-RTR, интерфейс подключен к сети
 172.16.2.0/28
+:::
 
-## 2.1 Создание и настройка интерфейсов
+В рамках руководства, будем придерживаться [этой таблицы адресации][1], ***чего и вам советуем, если вы слепо следуете руководству и не понимаете что делаете!***
 
-В директории /etc/net/ifaces создаем(mkdir "имя интерфейса") или копируем(cp ens18 "имя нового интерфейса"), если уже существует интерфейс.
-По итогу должно получиться 3 интерфейса, например ens18 ens19 ens20
+## 2.1 Конфигурируем подключение к WAN на ISP
 
-Переходим в созданную директорию, создаем файлы(если их нет):
+При выполнении вами задания, наименования интерфейсов на машинах и сети, к которым они подключены, могут отличаться от использованных в данном руководстве.
 
+Вы можете получить информацию о интерфейсах на машине с помощью `ip a`.
+
+::: details
+::: info
+Мы же, в рамках данного задания, договоримся использовать:
+
+* `ens18` в качестве интерфейса в сторону WAN
+* `ens19` в качестве интерфейса в сторону офиса HQ
+* `ens20` в качестве интерфейса в сторону офиса BR
+
+:::
+
+В первую очередь, нам необходимо включить IP Forwarding. 
+Если пропустить этот шаг что угодно требующее пересылки пакетов между сетевыми интерфейсами работать __НЕ БУДЕТ__
+
+Редактируем файл по пути `/etc/net/sysctl.conf` на хосте `ISP`
+
+```python:line-numbers
+# IPv4 packet forwarding.
+#
+# This variable is special, its change resets all configuration
+# parameters to their default state (RFC 1122 for hosts, RFC 1812 for
+# routers).
+#
+net.ipv4.ip_forward = 0 # [!code --]
+net.ipv4.ip_forward = 1 # [!code ++]
+
+#
+# Source validation by reversed path, as specified in RFC 1812.
 ```
-touch options ipv4address ipv4route resolv.conf
-```
 
-Начинаем настраивать файлы следуйщим образом:
+Сразу же конфигурируем интерфейс `ens18`. Получать ip и gateway он будет по DHCP.
 
-
-Файл options 
-```
-BOOTPROTO=static
+```txt:line-numbers {3-7}
+# ISP
+# /etc/net/ifaces/ens18/options
 TYPE=eth
 CONFIG_IPV4=yes
 CONFIG_WIRELESS=no
 DISABLED=no
+BOOTPROTO=dhcp
 ```
 
-Файл ipv4address
-```
-ip адрес интерфейса + префикс(ака сокрашенная маска),
-Например 172.16.1.1/28 для HQ-RTR и 172.16.2.1/28 для BR-RTR
+И указываем публичные доменные сервера для корректного разрешения доменных имён.
+
+```text:line-numbers {3}
+# ISP
+# /etc/net/ifaces/ens18/resolv.conf
+nameserver 77.88.8.8
 ```
 
-Файл ipv4route
-```
-ip адрес шлюза по умолчанию, куда должен вести интерфейс (маску писать не надо)
-```
-
-Файл resolv.conf
-```
-nameserver 8.8.8.8
-```
-(Существуют и другие dns сервера, например nameserver 77.88.7.7, если хотите можете вписать ниже через enter)
-
-
-## 2.2  На ISP настройте динамическую сетевую трансляцию портов для доступа к сети Интернет HQ-RTR и BR-RTR. Настройка NAT
-
-Устанавливаем iptables
-
-```
-apt-get install iptables
+Применяем обновлённую сетевую конфигурацию
+```shell
+systemctl restart network
 ```
 
-Настраиваем iptables
-<!-- "интерфейс, который направлен в интернет, обычно" -->
+Проверяем наличие доступа к репозиториям дистрибутива. Если доступа нет, значит в ходе выполнения был допущен косяк.
+
+## 2.2 Конфигурация сети в сторону офиса HQ
+::: details
+::: info
+Для конфигурации сети на машине HQ-RTR будут использоваться следующие обозначения:
+
+* `ens18` - интерфейс в сторону ISP
+* `ens19` - интерфейс для коммутации
+:::
+
+В первую очередь конфигурируем интерфейс `ens19` на стороне `ISP`. Делается это подобным образом:
+
+```txt:line-numbers {3-7}
+# ISP
+# /etc/net/ifaces/ens19/options
+TYPE=eth
+CONFIG_IPV4=yes
+CONFIG_WIRELESS=no
+DISABLED=no
+BOOTPROTO=static
 ```
+
+::: tip
+В `options` есть несколько обязательных для указания параметров вроде `TYPE` или `BOOTPROTO`.
+
+Полностью ознакомиться со всеми параметрами, которые используются в `options` для конфигурации сетевых интерфейсов, можно на [этой странице][2].
+:::
+
+```   txt:line-numbers {3}
+# ISP
+# /etc/net/ifaces/ens19/ipv4address
+172.16.1.1/28
+```
+::: info
+Конфигурация статических IPv4 адресов для `etcnet` всегда происходит в файле `ipv4address` необходимого сетевого интерфейса. 
+:::
+
+---
+
+Конфигурируем `ens18` на стороне HQ-RTR подобным образом.
+```txt:line-numbers {3-7}
+# HQ-RTR
+# /etc/net/ifaces/ens18/options
+TYPE=eth
+CONFIG_IPV4=yes
+CONFIG_WIRELESS=no
+DISABLED=no
+BOOTPROTO=static
+```
+
+```txt:line-numbers {3}
+# HQ-RTR
+# /etc/net/ifaces/ens18/ipv4address
+172.16.1.1/28
+```
+
+```txt:line-numbers {3}
+# HQ-RTR
+# /etc/net/ifaces/ens18/ipv4route
+default via 172.16.1.1
+```
+
+:::info
+В файле `ipv4route` можно указывать любые статические маршруты.
+
+Однако, в рамках ДЭ мы настраиваем динамическую маршрутизацию, потому тут мы конфигурируем только default gateway маршруты.
+:::
+
+```text:line-numbers {3}
+# HQ-RTR
+# /etc/net/ifaces/ens18/resolv.conf
+nameserver 77.88.8.8
+```
+
+::: info
+В файле `resolv.conf` мы конфигурируем сервера доменных имён, к которым будет обращаться наш системный резолвер.
+
+Сервер доменных имён не обязательно должен быть публичным. Далее в заданиях мы будем конфигурировать сервер доменных имён нашей организации.
+
+Почитать подробнее про `resolv.conf` можно [тут][3].
+:::
+
+## 2.3 Конфигурация сети в сторону офиса BR
+::: details
+::: info
+Для конфигурации сети на машине BR-RTR будут использоваться следующие обозначения:
+
+* `ens18` - интерфейс в сторону ISP
+* `ens19` - интерфейс в сторону BR-SRV
+:::
+
+Производим конфигурацию сети ISP-BR по аналогии с конфигурацией сети ISP-HQ.
+
+```txt:line-numbers {3-7}
+# ISP
+# /etc/net/ifaces/ens20/options
+TYPE=eth
+CONFIG_IPV4=yes
+CONFIG_WIRELESS=no
+DISABLED=no
+BOOTPROTO=static
+```
+
+```   txt:line-numbers {3}
+# ISP
+# /etc/net/ifaces/ens20/ipv4address
+172.16.2.1/28
+```
+
+---
+
+```txt:line-numbers {3-7}
+# BR-RTR
+# /etc/net/ifaces/ens18/options
+TYPE=eth
+CONFIG_IPV4=yes
+CONFIG_WIRELESS=no
+DISABLED=no
+BOOTPROTO=static
+```
+
+```txt:line-numbers {3}
+# BR-RTR
+# /etc/net/ifaces/ens18/ipv4address
+172.16.2.2/28
+```
+
+```txt:line-numbers {3}
+# BR-RTR
+# /etc/net/ifaces/ens18/ipv4route
+default via 172.16.2.1
+```
+
+```text:line-numbers {3}
+# BR-RTR
+# /etc/net/ifaces/ens18/resolv.conf
+nameserver 77.88.8.8
+```
+
+## 2.4 Конфигурация Masquerade на ISP
+
+Для конфигурации DNAT на ISP нам потребуется межсетевой экран.
+В рамках руководства будем использовать iptables. Для выполнения заданий его возможностей нам хватит с головой.
+
+Ставим пакет iptables
+
+```shell
+apt-get update && apt-get install iptables
+```
+
+Создаём правило DNAT в таблице `nat`, цепочке `POSTROUTING` для интерфейса `ens18`.
+
+```shell
 iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE
 ```
 
-<!--  потом прописываешь команду , потом сохроняешься всю эту байду с помошью -->
+Ввиду того, что по-умолчанию iptables хранит правила только в оперативной памяти,
+их необходимо вручную сохранить и добавить в автозагрузку демон, применяющий их при запуске ОС.
 
-Сохраняем настройки 
+Сохраняем правила iptables в файл по пути `/etc/sysconfig/iptables`
 
+```shell
+iptables-save > /etc/sysconfig/iptables
 ```
-iptables-save >> /etc/sysconfig/iptables
-```
-Ставим его на автозагрузку через
 
-```
+Добавляем демон `iptables` в автозагрузку нашей системы инициализации.
+
+```shell
 systemctl enable iptables
 ```
 
-Перезапускаем демон iptables, чтоб применить настройки
+# 2.5 Проверяем сетевую связанность
 
-```
-systemctl restart iptables
+Если конфигурация сетевых устройств в сетях ISP-HQ и ISP-BR выполнена корректно,
+каждая машина должна успешно "пинговать" каждого участника сети.
+
+К примеру, пошлём несколько ICMP пакетов с хоста HQ-RTR на хост BR-RTR
+
+```shell
+# HQ-RTR
+ping 172.16.2.2
 ```
 
-Настраиваем файл /etc/net/sysctl.conf
-```
-Заменяем net.ipv4.ip_forward = 0 на net.ipv4.ip_forward = 1
+Если пинг идёт, поздравляю - сетевая связанность присутствует.
+
+---
+
+Так же, все 3 машины должны иметь доступ к репозиториям дистрибутива.
+
+Проверить это очень легко - достаточно просто попробовать синхронизировать список пакетов
+
+```shell
+apt-get update
 ```
 
-
-Полезные материалы:
-~~~~
-https://www.altlinux.org/Etcnet
-~~~~
+[1]: </appendix/ip_table.md>
+[2]: <https://www.opennet.ru/cgi-bin/opennet/man.cgi?topic=etcnet-options&category=5>
+[3]: <https://www.opennet.ru/docs/RUS/tcp_conf/tcp07.html>
 
 
 
