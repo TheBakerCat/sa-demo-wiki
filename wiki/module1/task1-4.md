@@ -74,45 +74,85 @@ BOOTPROTO=static
 192.168.99.1/28
 ```
 
-
+Проверяем создались ли vlan
 ~~~~
 systemctl restart network
 ~~~~
 
-###4.2 Клиент машина 
+## 4.2 Клиент машины HQ-SRV  и HQ-CLI
 
-/etc/net/iface/vlan
+HQ-SRV
 
-options 
-~~~~
+```shell
+#options 
+#/etc/net/iface/vlan.100
+
 BOOTPROTO=static
 TYPE=vlan
 VID="номер vlan"
 HOST="ens18"
 CONFIG_IPV4=yes
 DISABLED=no
-~~~~
+```
 
-ipv4address
+```shell
+#ipv4address
 
-~~~~
-ip адрес клиент машины /маска
-~~~~
+#/etc/net/iface/vlan.100/ipv4address
+192.168.100.2/28
+```
 
-ipv4route
-~~~~
-default via "ip vlan на HQ-RTR
-~~~~
+```shell
+#ipv4route
+#/etc/net/iface/vlan.100/ipv4routes
 
-resolv.conf
-~~~~
+default via 192.168.100.1
+```
+
+```shell
+#resolv.conf
+#/etc/net/iface/vlan.100/resolv.conf
+
 nameserver 8.8.8.8
-~~~~
+```
+
+HQ-CLI
+
+```shell
+#options 
+#/etc/net/iface/vlan.200
+
+BOOTPROTO=static
+TYPE=vlan
+VID=200
+HOST="ens18"
+CONFIG_IPV4=yes
+DISABLED=no
+```
+
+```shell
+#ipv4address
+#/etc/net/iface/vlan.200/ipv4address
+
+192.168.200.2/29
+```
+
+```shell
+#ipv4route
+#/etc/net/iface/vlan.200/ipv4routes
+
+default via 192.168.200.1
+```
+
+```shell
+#resolv.conf
+#/etc/net/iface/vlan.200/resolv.conf
+
+nameserver 8.8.8.8
+```
 
 Полезные материалы:
-~~~~
 [https://www.altlinux.org/Etcnet][1]
-~~~~
 
 ## 4.2Настройка openvswitch
 BR-RTR
