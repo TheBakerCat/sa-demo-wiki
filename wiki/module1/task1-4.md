@@ -76,7 +76,7 @@ nameserver 8.8.8.8
 
 Полезные материалы:
 ~~~~
-https://www.altlinux.org/Etcnet
+[https://www.altlinux.org/Etcnet][1]
 ~~~~
 
 ## 4.2Настройка openvswitch
@@ -186,8 +186,10 @@ ping ya.ru
 ~~~~
 
 Полезные материалы:
-[https://www.altlinux.org/Etcnet/openvswitch][1]
+[https://www.altlinux.org/Etcnet/openvswitch][2]
 
-[1]: <https://www.altlinux.org/Etcnet/openvswitch>
+
+[1]: <https://www.altlinux.org/Etcnet>
+[2]: <https://www.altlinux.org/Etcnet/openvswitch>
 
 
