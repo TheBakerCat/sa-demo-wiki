@@ -39,7 +39,7 @@ AllowUsers sshuser
 
 ## 1.3 Ограничьте количество попыток входа до двух
 
-Для ограничения попыток ввода пароля нужно найти строчку с `#MaxAuthTries 6` в файле `/etc/openssh/sshd_config` на хосте `HQ-SRV`
+Для ограничения попыток ввода пароля нужно найти строчку с `#MaxAuthTries 6` в файле `/etc/openssh/sshd_config` на хосте `HQ-SRV` раскомментировать и изменить значение
 
 ```python:line-numbers
 
