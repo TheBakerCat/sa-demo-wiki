@@ -18,7 +18,7 @@ apt-get update && apt-get install openssh-server
 
 ## 1.1 Настройка подключения с порта 2026
 
-Найдите строчку `port 22` раскомментируйте и измените на нужный port 2026
+Найдите строчку `port 22` раскомментируйте и измените на нужный `port 2026`
 Редактируем файл по пути `/etc/openssh/sshd_config` на хосте `HQ-SRV`
 
 ```python:line-numbers
