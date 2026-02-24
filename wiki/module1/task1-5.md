@@ -10,8 +10,6 @@
 • Настройте баннер «Authorized access only».
 :::
 
-Установка sshd
-
 Установка ssh сервера:
 
 ```shell
