@@ -17,6 +17,8 @@
 HQ-RTR
 Создаем следующие файлы\директории:
 
+HQ-SW
+
 ```shell
 #options
 #etc/net/iface/HQ-SW/options
