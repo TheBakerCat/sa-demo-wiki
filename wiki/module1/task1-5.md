@@ -22,7 +22,15 @@ apt-get update && apt-get install openssh-server
 vim /etc/openssh/sshd_config
 ```
 
-Найдите строчку port 22 раскомментируйте и измените на нужный port
+Найдите строчку `port 22` раскомментируйте и измените на нужный port 2026
+
+```python:line-numbers
+
+#port 22 # [!code --]
+port 2026 # [!code ++]
+
+```
+
 
 ## 1.2
 
