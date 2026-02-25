@@ -76,7 +76,7 @@ ospf router-id 2.2.2.2
 HQ-RTR и BR-RTR
 ens18
 ```shell
-int "ens18"
+int ens18
 ```
 
 ```shell
@@ -85,7 +85,7 @@ ip ospf passive
 
 ens19
 ```shell
-int "ens19"
+int ens19
 ```
 
 ```shell
@@ -93,7 +93,7 @@ ip ospf passive
 ```
 
 ```shell
-int "GRE"
+int "название вашего интерфейса с с gre"
 ```
 
 ```shell
@@ -104,10 +104,10 @@ ip ospf network point-to-point
 
 HQ-RTR
 ```shell
-network "10.0.0.0/31" area 0
-network "192.168.100.0/28" area 0
-network "192.168.200.0/29" area 0
-network "192.168.99.0/28" area 0
+network 10.0.0.0/31 area 0
+network 192.168.100.0/28 area 0
+network 192.168.200.0/29 area 0
+network 192.168.99.0/28 area 0
 ```
 
 ```
@@ -122,11 +122,13 @@ end
 exit
 ```
 Для проверки конфигурации используйте `sh ru`
+
+В 
 
 BR-RTR
 ```shell
-network "10.0.0.0/31" area 0
-network "192.168.3.2/28" area 0
+network 10.0.0.0/31 area 0
+network "ip адресс HQ-SRV" area 0
 ```
 
 ```
@@ -141,7 +143,7 @@ end
 exit
 ```
 
-Для проверки конфигурации используйте `sh ru`
+Для проверки конфигурации используйте `sh ru`, находясь в программе vtysh
 
 
 [1]: </appendix/ip_table.md>
