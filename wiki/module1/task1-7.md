@@ -21,10 +21,10 @@ Cети одного офиса должны быть доступны из др
 
 Установка 
 ```shell
-apt-get update && apt-get install ffr
+apt-get update && apt-get install frr
 ```
 
-## 7.1 Настройка ffr (ospf)
+## 7.1 Настройка frr (ospf)
 
 В файле `/etc/frr/daemons` находим строчку `ospfd=no` и меняем ее на `ospfd=yes`
 
