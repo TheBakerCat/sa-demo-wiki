@@ -50,7 +50,7 @@ MaxAuthTries 2 # [!code ++]
 
 ## 1.4 Настройте баннер «Authorized access only».
 
-Для настройки баннера найдите в rонфигурационном файле строчку `#Banner` раскомментируйте и пропишите путь к файлу `/root/banner`, где будет лежать «Authorized access only»
+Для настройки баннера найдите в конфигурационном файле `/etc/openssh/sshd_config` строчку `#Banner` раскомментируйте и пропишите путь к файлу `/root/banner`, где будет лежать «Authorized access only»
 
 Создаем файл banner
 
