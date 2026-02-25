@@ -43,7 +43,7 @@ AllowUsers sshuser
 
 ```python:line-numbers
 
-#MaxAuthTries 6 # [!code --]
+MaxAuthTries 6 # [!code --]
 MaxAuthTries 2 # [!code ++]
 
 ```
