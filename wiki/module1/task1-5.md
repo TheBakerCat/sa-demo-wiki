@@ -23,7 +23,7 @@ apt-get update && apt-get install openssh-server
 
 ```python:line-numbers
 
-#port 22 # [!code --]
+port 22 # [!code --]
 port 2026 # [!code ++]
 
 ```
