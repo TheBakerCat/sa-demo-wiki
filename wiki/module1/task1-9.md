@@ -62,5 +62,17 @@ CONFIG_IPV4=yes
 DISABLED=no
 ```
 
+Перезапускаем сетевую службу
+
+```shell
+systemctl restart network
+```
+
+Для проверки работы сети попробуйте обновить репозитории
+
+```shell
+apt-get update
+```
+
 
 [1]: </appendix/ip_table.md>
