@@ -21,24 +21,22 @@
 В рамках руководства, будем придерживаться [этой таблицы адресации][1], ***чего и вам советуем, если вы слепо следуете руководству и не понимаете что делаете!***
 
 установка 
-~~~~
+```shell
 apt-get update && apt0get install dhcpd
-~~~~
+```
 
 ## 9.1
 
-конф файл 
-
-/etc/dhcp/dhcpd.conf
+Конфигурационный файл лежит по следующему пути: `/etc/dhcp/dhcpd.conf`
 
 ```txt:line-numbers {9}
-sub-net 192.168.200.0 netmask 255.255.255.x(посмотрите какая у вас маска при такой записи, если получится табличку прикреплю)
-    options routers "ip vlan"
-    options subnet-mask совпадает с маской выше
+sub-net 192.168.200.0 netmask 255.255.255.248(посмотрите какая у вас маска при такой записи, если получится табличку прикреплю)
+    options routers              "192.168.200.1"
+    options subnet-mask          255.255.255.248
     X
     X
-    options domain-name-servers "ip vlan"
-    range dynamic-bootp 192.168.vlan.2 192.168.vlan.10
+    options domain-name-servers "192.168.3.2"
+    range dynamic-bootp 192.168.200.2 192.168.200.10
     x
     x
 ```
