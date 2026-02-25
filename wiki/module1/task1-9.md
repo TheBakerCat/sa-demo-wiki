@@ -25,7 +25,7 @@
 apt-get update && apt-get install dhcpd
 ```
 
-## 9.1
+## 9.1 Служба Dhcpd на HQ-RTR
 
 Конфигурационный файл лежит по следующему пути: `/etc/dhcp/dhcpd.conf`
 
@@ -46,7 +46,21 @@ sub-net 192.168.200.0 netmask 255.255.255.248(посмотрите какая у
 systemctl restart dhcpd
 ```
 
+## 9.2 Настройка Dhcpd на HQ-CLI
 
+Переходим в конфигурационный файл `etc/net/iface/ens18.200/options
+
+```shell
+#options 
+#/etc/net/iface/vlan.200
+
+BOOTPROTO=dhcp
+TYPE=vlan
+VID=200
+HOST="ens18"
+CONFIG_IPV4=yes
+DISABLED=no
+```
 
 
 [1]: </appendix/ip_table.md>
