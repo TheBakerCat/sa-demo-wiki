@@ -22,7 +22,7 @@
 
 установка 
 ```shell
-apt-get update && apt0get install dhcpd
+apt-get update && apt-get install dhcpd
 ```
 
 ## 9.1
