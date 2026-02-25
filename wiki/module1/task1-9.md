@@ -29,16 +29,18 @@ apt-get update && apt-get install dhcpd
 
 Конфигурационный файл лежит по следующему пути: `/etc/dhcp/dhcpd.conf`
 
+Пример можно скопировать с файла dhcpd.conf.sample
+
 ```txt:line-numbers {9}
-sub-net 192.168.200.0 netmask 255.255.255.248(посмотрите какая у вас маска при такой записи, если получится табличку прикреплю)
-    options routers              "192.168.200.1"
-    options subnet-mask          255.255.255.248
-    X
-    X
+sub-net 192.168.200.0 netmask 255.255.255.248 #сеть и маска подсети
+    options routers              "192.168.200.1" #адрес маршрутизатора
+    options subnet-mask          255.255.255.248 #маска подсети
+    
+    
     options domain-name-servers "192.168.3.2"
-    range dynamic-bootp 192.168.200.2 192.168.200.10
-    x
-    x
+    range dynamic-bootp 192.168.200.2 192.168.200.10  #диапазон DHCP-подсети
+    
+    
 ```
 
 Перезапускаем службу DHCP
