@@ -35,8 +35,8 @@ touch options ipv4address ipv4route
 
 TYPE=iptun
 TUNTYPE=gre
-TUNLOCAL="10.0.0.1" #ip адрес интерфейса от которого отправляется пакет
-TUNREMOTE="10.0.0.2" #ip адрес интерфейса, который получает пакет
+TUNLOCAL="172.16.1.2" #ip адрес интерфейса от которого отправляется пакет
+TUNREMOTE="172.16.2.2" #ip адрес интерфейса, который получает пакет
 TUNTTL=64
 HOST="ens18"
 TUNOPTIONS='ttl64'
@@ -90,8 +90,8 @@ touch options ipv4address ipv4route
 
 TYPE=iptun
 TUNTYPE=gre
-TUNLOCAL="10.0.0.2" #ip адрес интерфейса от которого отправляется пакет
-TUNREMOTE="10.0.0.1" #ip адрес интерфейса, который получает пакет
+TUNLOCAL="172.16.2.2" #ip адрес интерфейса от которого отправляется пакет
+TUNREMOTE="172.16.1.2" #ip адрес интерфейса, который получает пакет
 TUNTTL=64
 HOST="интерфейс в сторону isp"
 TUNOPTIONS='ttl64'
