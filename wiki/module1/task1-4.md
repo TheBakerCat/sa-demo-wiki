@@ -172,7 +172,7 @@ nameserver 8.8.8.8
 Полезные материалы:
 [https://www.altlinux.org/Etcnet][2]
 
-## 4.2 Настройка openvswitch
+## 4.3 Настройка openvswitch
 BR-RTR
 
 для проверки используем:
