@@ -73,12 +73,17 @@ DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:1.1.1.
 Создаём пользавтелей
 
 samba-tool user add hquser1 Aaaa123
+
 samba-tool user add hquser2 Aaaa123
+
 samba-tool user add hquser3 Aaaa123
+
 samba-tool user add hquser4 Aaaa123
+
 samba-tool user add hquser5 Aaaa123
 
 Теперь создадим группу и поместим туда созданных пользователей:
 
 samba-tool group add hq
+
 samba-tool group addmembers hq hquser1,hquser2,hquser3,hquser4,hquser5
