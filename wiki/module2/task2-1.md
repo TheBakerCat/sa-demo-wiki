@@ -17,6 +17,42 @@
 
 :::
 
+Устонавливаем samba
+
 ```python:line-numbers
 apt-get install task-samba-dc
 ```
+
+Запускаем программу настройки
+
+```
+samba-tool domain provision
+```
+
+Псоле этого программа будет просить ввести параметры
+
+```
+Realm: au-team.irpo
+```
+
+Далее пропускаем всё с помощью Enter
+
+```
+Domain [au-team]:
+
+Server Role (dc, member, standalone) [dc]:
+
+DNS backend (SAMBA_INTERNAL, BIND9_FLATFILE, BIND9_DLZ, NONE) [SAMBA_INTERNAL]:
+```
+
+Здесь прописываем любой DNS сервер, например 1.1.1.1:
+```
+DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:1.1.1.1
+```
+
+Ставим программу на автозапуск и запускаем
+
+```
+ systemctl enable --now samba
+```
+
