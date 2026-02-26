@@ -47,7 +47,7 @@ TUNOPTIONS='ttl64'
 #ipv4address
 #/etc/net/iface/GRE1/ipv4address
 
-10.0.0.1/31
+10.0.0.1/30
 ```
 (ip адрес интерфейса GRE на которой сейчас работаете)
 
@@ -57,7 +57,7 @@ TUNOPTIONS='ttl64'
 #ipv4route
 #/etc/net/iface/GRE1/ipv4route
 
-10.0.0.2/31
+10.0.0.2/30
 ```
 (ip адрес интерфейса GRE до которого идет пакет)
 
@@ -102,7 +102,7 @@ TUNOPTIONS='ttl64'
 #ipv4address
 
 #/etc/net/iface/GRE1/ipv4address
-10.0.0.2/31
+10.0.0.2/30
 ```
 (ip адрес интерфейса GRE на которой сейчас работаете)
 
@@ -112,7 +112,7 @@ TUNOPTIONS='ttl64'
 #ipv4route
 
 #/etc/net/iface/GRE1/ipv4route
-10.0.0.1/31
+10.0.0.1/30
 ```
 (ip адрес интерфейса GRE до которого идет пакет)
 
