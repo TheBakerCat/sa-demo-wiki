@@ -26,7 +26,7 @@
 # etc/net/iface/br0/options
 
 TYPE=ovsbr
-HOST="ens19"
+HOST=ens19
 BOOTPROTO=static
 ```
 
@@ -108,7 +108,7 @@ HQ-SRV
 BOOTPROTO=static
 TYPE=vlan
 VID=100
-HOST=`ens18`
+HOST=ens18
 CONFIG_IPV4=yes
 DISABLED=no
 ```
@@ -143,7 +143,7 @@ HQ-CLI
 BOOTPROTO=static
 TYPE=vlan
 VID=200
-HOST="ens18"
+HOST=ens18
 CONFIG_IPV4=yes
 DISABLED=no
 ```
