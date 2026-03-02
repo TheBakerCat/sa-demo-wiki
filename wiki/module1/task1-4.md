@@ -19,10 +19,9 @@
 
 ## 4.1 Создание Vlan
 
-Создаем следующие файлы\директории:
+Создаем следующие файлы\директории на HQ-RTR:
 
 ```shell
-# HQ-RTR
 # etc/net/iface/br0/options
 
 TYPE=ovsbr
@@ -31,7 +30,6 @@ BOOTPROTO=static
 ```
 
 ```shell
-# HQ-RTR
 # /etc/net/iface/vlan100/options
 
 TYPE=ovsport
@@ -42,7 +40,6 @@ CONFIG_IPV4=yes
 ```
 
 ```shell
-# HQ-RTR
 # /etc/net/iface/vlan100/ipv4address
 
 192.168.100.1/28
@@ -53,7 +50,6 @@ CONFIG_IPV4=yes
 vlan200
 
 ```shell
-# HQ-RTR
 # /etc/net/iface/vlan200/options
 
 TYPE=ovsport
@@ -64,7 +60,6 @@ CONFIG_IPV4=yes
 ```
 
 ```shell
-# HQ-RTR
 # /etc/net/iface/vlan200/ipv4address
 
 192.168.200.1/29
@@ -75,7 +70,6 @@ CONFIG_IPV4=yes
 vlan999
 
 ```shell
-# HQ-RTR
 # /etc/net/iface/vlan999/options
 
 TYPE=ovsport
@@ -86,7 +80,6 @@ CONFIG_IPV4=yes
 ```
 
 ```shell
-# HQ-RTR
 # /etc/net/iface/vlan999/ipv4address
 
 192.168.99.1/28
