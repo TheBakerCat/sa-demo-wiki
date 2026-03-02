@@ -17,7 +17,19 @@
 
 В рамках руководства, будем придерживаться [этой таблицы адресации][1], ***чего и вам советуем, если вы слепо следуете руководству и не понимаете что делаете!***
 
-## 4.1 Создание Vlan
+## 4.1 Настройка openvswitch
+На HQ-SRV скачиваем ovs.
+
+```
+apt-get install openvswitch
+```
+
+для проверки используем:
+```shell
+ovs-vsctl show 
+```
+
+## 4.2 Создание Vlan
 
 Создаем следующие файлы\директории на HQ-RTR:
 
@@ -90,7 +102,7 @@ CONFIG_IPV4=yes
 systemctl restart network
 ```
 
-## 4.2 Клиент машины HQ-SRV  и HQ-CLI
+## 4.3 Клиент машины HQ-SRV  и HQ-CLI
 
 HQ-SRV
 
@@ -164,7 +176,7 @@ nameserver 8.8.8.8
 
 Полезные материалы:
 [https://www.altlinux.org/Etcnet][2]
-
+<!--
 ## 4.3 Настройка openvswitch
 BR-RTR
 
@@ -177,7 +189,7 @@ ovs-vsctl show
 ```shell
 ping ya.ru -I "ip адрес vlan"
 ```
-
+-->
 Полезные материалы:
 
 * [Etcnet/openvswitch][3]
