@@ -20,7 +20,7 @@
 :::
 ## 1. Запуск и первичная настройка samba
 
-Устонавливаем samba
+Устанавливаем samba
 
 ```python:line-numbers
 apt-get install task-samba-dc
