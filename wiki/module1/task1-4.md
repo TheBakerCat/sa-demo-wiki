@@ -126,7 +126,7 @@ DISABLED=no
 
 ```shell
 # HQ-SRV
-# /etc/net/iface/ens18.100/ipv4routes
+# /etc/net/iface/ens18.100/ipv4route
 
 default via 192.168.100.1
 ```
@@ -161,7 +161,7 @@ DISABLED=no
 
 ```shell
 # HQ-CLI
-# /etc/net/iface/ens18.200/ipv4routes
+# /etc/net/iface/ens18.200/ipv4route
 
 default via 192.168.200.1
 ```
