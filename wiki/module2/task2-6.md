@@ -17,3 +17,41 @@ P@ssw0rd, порт приложения 8080, при необходимости 
 
 • Приложение должно быть доступно для внешних подключений через
 порт 8080
+<!--
+Services:
+testapp:
+db:
+container_name: testapр
+image: site
+restart: always
+networks:
+- testnet
+ports:
+- "8080:8000"
+environment:
+DB_HOST: db
+DB_PORT: 3306
+DB_TYPE: maria
+DB_NAME: mariadb
+DB_USER: maria
+DB_PASS: Password
+container_name: db
+image: mariadb
+networks:
+- testnet
+ports:
+- "3306:3306"
+environment:
+MARIADB_USER: maria
+MARIADB_PASSWORD: Password
+MARIADB_DATABASE: mariadb
+MARIADB_ROOT_PASSWORD: Password
+restart: unless-stopped
+networks:
+Tasks
+Cluster log
+• Поиск
+-->
+testnet:
+driver: bridge
+internal: true
