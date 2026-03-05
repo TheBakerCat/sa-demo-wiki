@@ -51,7 +51,8 @@ networks:
 Tasks
 Cluster log
 • Поиск
--->
+
 testnet:
 driver: bridge
 internal: true
+-->
