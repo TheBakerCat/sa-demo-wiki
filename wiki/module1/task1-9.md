@@ -22,7 +22,7 @@
 
 Установка 
 ```shell
-apt-get update && apt-get install dhcpd
+apt-get install dhcp-server
 ```
 
 ## 9.1 Служба Dhcpd на HQ-RTR
