@@ -33,12 +33,12 @@ apt-get install dhcp-server
 
 ```txt:line-numbers {9}
 sub-net 192.168.200.0 netmask 255.255.255.248 #сеть и маска подсети
-    options routers              "192.168.200.1" #адрес маршрутизатора
+    options routers              192.168.200.1 #адрес маршрутизатора
     options subnet-mask          255.255.255.248 #маска подсети
     
     
     options domain-name-servers "192.168.3.2"
-    range dynamic-bootp 192.168.200.2 192.168.200.10  #диапазон DHCP-подсети
+    range dynamic-bootp 192.168.200.2 192.168.200.7  #диапазон DHCP-подсети
     
     
 ```
