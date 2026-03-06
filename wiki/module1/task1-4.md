@@ -23,6 +23,11 @@
 apt-get install openvswitch
 ```
 
+Автозагрузка
+```
+systemctl enable --now openvswitch
+```
+
 для проверки используем:
 ```shell
 ovs-vsctl show 
