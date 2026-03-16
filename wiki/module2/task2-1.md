@@ -48,9 +48,9 @@ Server Role (dc, member, standalone) [dc]:
 DNS backend (SAMBA_INTERNAL, BIND9_FLATFILE, BIND9_DLZ, NONE) [SAMBA_INTERNAL]:
 ```
 
-Здесь прописываем любой DNS сервер, например 1.1.1.1:
+Здесь прописываем ip адрес нашего локального dns сервера(ip hq-srv):
 ```
-DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:1.1.1.1
+DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:ip hq-srv
 ```
 
 Ставим программу на автозапуск и запускаем
