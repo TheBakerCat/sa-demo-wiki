@@ -11,7 +11,7 @@
 ::: 
 
 ## 1. Настройка сервера 
-Открываем файл /etc/chrony.conf на машине IPS
+Открываем файл /etc/chrony.conf на машине ISP
 
 Меняет строчку local stratum 10 на local stratum 5
 
@@ -35,7 +35,7 @@ systemctl restart chronyd
 После чего добавляем строчку:
 
 ```
-pool "IP адресс IPS"
+pool "IP адресс ISP"
 ```
 
 Перезагружаем chronyd
@@ -49,7 +49,7 @@ SRV.
 
 ## 3. Проверка
 
-На клиенте при команде chronyc sources должно выводить ip адрес IPS
+На клиенте при команде chronyc sources должно выводить ip адрес ISP
 
 На сервере при команде chronyc clients должно выводить ip адреса всех обоих RTR
 
