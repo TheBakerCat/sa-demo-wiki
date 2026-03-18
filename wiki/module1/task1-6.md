@@ -8,17 +8,17 @@
 
 ## 6.1 Настройка GRE на HQ-RTR
 
-Создаем в директории /etc/net/iface другую директорию с названием нашего GRE туннеля (например GRE1)
+Создаем в директории /etc/net/ifaces другую директорию с названием нашего GRE туннеля (например GRE1)
 
 
 ```shell
-mkdir /etc/net/iface/GRE1
+mkdir /etc/net/ifaces/GRE1
 ```
 
 Переходим в сделанную директорию и создаем:
 
 ```shell
-cd /etc/net/iface/GRE1
+cd /etc/net/ifaces/GRE1
 ```
 
 Создаем конфигурационные файлы для GRE
@@ -31,7 +31,7 @@ touch options ipv4address ipv4route
 
 ```shell
 #options
-#/etc/net/iface/GRE1/options
+#/etc/net/ifaces/GRE1/options
 
 TYPE=iptun
 TUNTYPE=gre
@@ -45,7 +45,7 @@ TUNOPTIONS='ttl64'
 
 ```shell
 #ipv4address
-#/etc/net/iface/GRE1/ipv4address
+#/etc/net/ifaces/GRE1/ipv4address
 
 10.0.0.1/30
 ```
@@ -55,7 +55,7 @@ TUNOPTIONS='ttl64'
 
 ```shell
 #ipv4route
-#/etc/net/iface/GRE1/ipv4route
+#/etc/net/ifaces/GRE1/ipv4route
 
 default via 10.0.0.2
 ```
@@ -63,17 +63,17 @@ default via 10.0.0.2
 
 ## 6.2 Настройка GRE на BR-RTR
 
-Создаем в директории /etc/net/iface другую директорию с названием нашего GRE туннеля (например GRE1)
+Создаем в директории /etc/net/ifaces другую директорию с названием нашего GRE туннеля (например GRE1)
 
 
 ```shell
-mkdir /etc/net/iface/GRE1
+mkdir /etc/net/ifaces/GRE1
 ```
 
 Переходим в сделанную директорию и создаем:
 
 ```shell
-cd /etc/net/iface/GRE1
+cd /etc/net/ifaces/GRE1
 ```
 
 Создаем конфигурационные файлы для GRE
@@ -86,7 +86,7 @@ touch options ipv4address ipv4route
 
 ```shell
 #options
-#/etc/net/iface/GRE1/options
+#/etc/net/ifaces/GRE1/options
 
 TYPE=iptun
 TUNTYPE=gre
@@ -101,7 +101,7 @@ TUNOPTIONS='ttl64'
 ```shell
 #ipv4address
 
-#/etc/net/iface/GRE1/ipv4address
+#/etc/net/ifaces/GRE1/ipv4address
 10.0.0.2/30
 ```
 (ip адрес интерфейса GRE на которой сейчас работаете)
@@ -111,7 +111,7 @@ TUNOPTIONS='ttl64'
 ```shell
 #ipv4route
 
-#/etc/net/iface/GRE1/ipv4route
+#/etc/net/ifaces/GRE1/ipv4route
 default via 10.0.0.1
 ```
 (ip адрес интерфейса GRE до которого идет пакет)
