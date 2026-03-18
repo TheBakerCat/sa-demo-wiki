@@ -38,7 +38,7 @@ ovs-vsctl show
 Создаем следующие файлы\директории на HQ-RTR:
 
 ```shell
-# etc/net/iface/br0/options
+# etc/net/ifaces/br0/options
 
 TYPE=ovsbr
 HOST=ens19
@@ -46,7 +46,7 @@ BOOTPROTO=static
 ```
 
 ```shell
-# /etc/net/iface/vlan100/options
+# /etc/net/ifaces/vlan100/options
 
 TYPE=ovsport
 BRIDGE=br0
@@ -56,7 +56,7 @@ CONFIG_IPV4=yes
 ```
 
 ```shell
-# /etc/net/iface/vlan100/ipv4address
+# /etc/net/ifaces/vlan100/ipv4address
 
 192.168.100.1/28
 ```
@@ -66,7 +66,7 @@ CONFIG_IPV4=yes
 vlan200
 
 ```shell
-# /etc/net/iface/vlan200/options
+# /etc/net/ifaces/vlan200/options
 
 TYPE=ovsport
 BRIDGE=br0
@@ -76,7 +76,7 @@ CONFIG_IPV4=yes
 ```
 
 ```shell
-# /etc/net/iface/vlan200/ipv4address
+# /etc/net/ifaces/vlan200/ipv4address
 
 192.168.200.1/29
 ```
@@ -86,7 +86,7 @@ CONFIG_IPV4=yes
 vlan999
 
 ```shell
-# /etc/net/iface/vlan999/options
+# /etc/net/ifaces/vlan999/options
 
 TYPE=ovsport
 BRIDGE=br
@@ -96,7 +96,7 @@ CONFIG_IPV4=yes
 ```
 
 ```shell
-# /etc/net/iface/vlan999/ipv4address
+# /etc/net/ifaces/vlan999/ipv4address
 
 192.168.99.1/28
 ```
@@ -124,21 +124,21 @@ DISABLED=no
 
 ```shell
 # HQ-SRV
-# /etc/net/iface/ens18.100/ipv4address
+# /etc/net/ifaces/ens18.100/ipv4address
 
 192.168.100.2/28
 ```
 
 ```shell
 # HQ-SRV
-# /etc/net/iface/ens18.100/ipv4route
+# /etc/net/ifaces/ens18.100/ipv4route
 
 default via 192.168.100.1
 ```
 
 ```shell
 # HQ-SRV
-# /etc/net/iface/ens18.100/resolv.conf
+# /etc/net/ifaces/ens18.100/resolv.conf
 
 nameserver 8.8.8.8
 ```
@@ -147,7 +147,7 @@ HQ-CLI
 
 ```shell
 # HQ-CLI 
-# /etc/net/iface/ens18.200
+# /etc/net/ifaces/ens18.200
 
 BOOTPROTO=static
 TYPE=vlan
@@ -159,21 +159,21 @@ DISABLED=no
 
 ```shell
 # HQ-CLI
-# /etc/net/iface/ens18.200/ipv4address
+# /etc/net/ifaces/ens18.200/ipv4address
 
 192.168.200.2/29
 ```
 
 ```shell
 # HQ-CLI
-# /etc/net/iface/ens18.200/ipv4route
+# /etc/net/ifaces/ens18.200/ipv4route
 
 default via 192.168.200.1
 ```
 
 ```shell
 # HQ-CLI
-# /etc/net/iface/ens18.200/resolv.conf
+# /etc/net/ifaces/ens18.200/resolv.conf
 
 nameserver 8.8.8.8
 ```
