@@ -30,9 +30,9 @@ hq-cli ansible_ssh_host=192.168.200.2 ansible_ssh_user=Administrator ansible_ssh
 ## 2.1 Редактируем файл /etc/ansible/ansible.cfg, приводя его к следующе-
 му виду (для того, чтобы ansible не писал ошибки интерпретатора python3):
 
-```
+
 ![Uploading изображение.png…]()
-```
+
 ### 5.1
 
 Доп материалы:
