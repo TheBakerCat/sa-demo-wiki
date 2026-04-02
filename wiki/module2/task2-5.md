@@ -8,16 +8,13 @@ HQ-CLI, HQ-RTR и BR-RTR
 • Все указанные машины должны без предупреждений и ошибок отвечать
 pong на команду ping в ansible посланную с BR-SRV.
 
-## 1. Необходимо установить пакет ansible и sshpass, выполнить это можно
-следующей командой:
+## 1. Необходимо установить пакет ansible и sshpass, выполнить это можно следующей командой:
 
 ```
 apt-get update && apt-get install –y ansible sshpass
 ```
 
-## 2. Приведем файл инвентаря Ansible к следующему виду, отредактировав
-конфигурационный файл по пути /etc/ansible/hosts любым удобным тек-
-стовым редактором, например vim или nano:
+## 2. Приведем файл инвентаря Ansible к следующему виду, отредактировав конфигурационный файл по пути /etc/ansible/hosts любым удобным текстовым редактором, например vim или nano:
 
 ```
 br-rtr ansible_ssh_host=192.168.1.1 ansible_ssh_user=net_admin ansible_ssh_pass=P@ssword
@@ -27,8 +24,7 @@ hq-cli ansible_ssh_host=192.168.200.2 ansible_ssh_user=Administrator ansible_ssh
 ```
 
 
-## 2.1 Редактируем файл /etc/ansible/ansible.cfg, приводя его к следующе-
-му виду (для того, чтобы ansible не писал ошибки интерпретатора python3):
+## 2.1 Редактируем файл /etc/ansible/ansible.cfg, приводя его к следующему виду (для того, чтобы ansible не писал ошибки интерпретатора python3):
 
 ```
 [defaults]
