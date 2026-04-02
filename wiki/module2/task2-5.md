@@ -30,7 +30,7 @@ hq-cli ansible_ssh_host=192.168.200.2 ansible_ssh_user=Administrator ansible_ssh
 [defaults]
 inventory = /etc/ansible/hosts 
 host_key_checking = False
-/usr/bin/python3 interpreter_python
+interpreter_python = /usr/bin/python3 
 ```
 
 ### 5.1
