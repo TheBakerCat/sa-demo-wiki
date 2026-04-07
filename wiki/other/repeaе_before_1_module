@@ -1,0 +1,3 @@
+2 задание
+iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE
+Если забыл написание MASQUERADE - искать в man, точнее iptables-extensions
