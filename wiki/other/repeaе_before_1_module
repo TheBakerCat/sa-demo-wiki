@@ -1,5 +1,6 @@
 
 Если конфиг интерфеса пустой можно скопировать с /etc/net/iface/default/options
+Название нужных файлов: options, ipv4address, ipv4route, resolv.conf
 
 Не забывать редактировать /etc/net/sysctl.conf
 
