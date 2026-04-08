@@ -3,6 +3,8 @@
 
 Не забывать редактировать /etc/net/sysctl.conf
 
+Маску сети можно везде поставить 28, кроме gre туннеля и vlan999 - там 32 и 29 соответственно  
+
 iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE
 Если забыл написание MASQUERADE - искать в man, точнее iptables-extensions
 или в /etc/net/iface/default/fw/iptables/syntax
