@@ -1,3 +1,8 @@
-2 задание
+
+Если конфиг интерфеса пустой можно скопировать с /etc/net/iface/default/options
+
+Не забывать редактировать /etc/net/sysctl.conf
+
 iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE
 Если забыл написание MASQUERADE - искать в man, точнее iptables-extensions
+или в /etc/net/iface/default/fw/iptables/syntax
