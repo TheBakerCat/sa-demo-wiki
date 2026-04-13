@@ -10,3 +10,19 @@
 iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE
 Если забыл написание MASQUERADE - искать в man, точнее iptables-extensions
 или в /etc/net/iface/default/fw/iptables/syntax
+
+4з
+
+br0
+  TYPE=ovsbr
+  HOST=ens19(который в сторону локалки)
+
+vlan100
+  TYPE=ovsport
+  BRIDGE=br0
+  VID=200
+
+На клиентах
+  TYPE=vlan
+  VID=100
+  HOST=ens18
