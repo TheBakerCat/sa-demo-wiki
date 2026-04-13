@@ -178,8 +178,7 @@ default via 192.168.200.1
 nameserver 8.8.8.8
 ```
 
-Полезные материалы:
-[https://www.altlinux.org/Etcnet][2]
+
 <!--
 ## 4.3 Настройка openvswitch
 BR-RTR
@@ -195,7 +194,7 @@ ping ya.ru -I "ip адрес vlan"
 ```
 -->
 Полезные материалы:
-
+* [https://www.altlinux.org/Etcnet][2]
 * [Etcnet/openvswitch][3]
 
 [1]: </appendix/ip_table.md>
