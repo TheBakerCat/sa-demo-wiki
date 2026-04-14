@@ -108,6 +108,12 @@ systemctl restart network
 
 ## 4.3 Клиент машины HQ-SRV  и HQ-CLI
 
+<--
+ПРМИЧАНИЕ
+
+Чтоб на клиенте всё завелось, нужнен интерфейс ens18 с TYPE=eth, иначе vlan, ака ens18.X00 не заведёться
+-->
+
 HQ-SRV
 
 ```shell
