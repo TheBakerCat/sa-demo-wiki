@@ -26,3 +26,4 @@ vlan100
   TYPE=vlan
   VID=100
   HOST=ens18
+И не забывать что нужнен рабочий интерфейс с TYPE=eth
