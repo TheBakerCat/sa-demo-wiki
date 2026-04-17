@@ -23,14 +23,22 @@ hq-srv ansible_ssh_host=192.168.100.2 ansible_ssh_user=sshuser ansible_ssh_pass=
 hq-cli ansible_ssh_host=192.168.200.2 ansible_ssh_user=Administrator ansible_ssh_pass=P@ssword
 ```
 
+## 2.1 Редактируем файл /etc/ansible/ansible.cfg, чтобы отключить проверку ключа хоста при подключении по SSH:
 
-## 2.1 Как проверить?:
+Находим строчку "host_key_checking = False" и раскоментируем ёё
+
+```
+#host_key_checking = False >> host_key_checking = False
+```
+
+
+## 2.2 Как проверить?:
 
 ```
 ansible all -m ping
 ```
 
-## 2.1 Редактируем файл /etc/ansible/ansible.cfg, приводя его к следующему виду (для того, чтобы ansible не писал ошибки интерпретатора python3):
+
 
 ### 5.1
 
