@@ -131,7 +131,7 @@ BOOTPROTO=static
 ```txt:line-numbers {3}
 # HQ-RTR
 # /etc/net/ifaces/ens18/ipv4address
-172.16.1.1/28
+172.16.1.2/28
 ```
 
 ```txt:line-numbers {3}
@@ -258,7 +258,7 @@ systemctl enable iptables
 
 ```shell
 # HQ-RTR
-ping 172.16.2.2
+ping 172.16.2.1
 ```
 
 Если пинг идёт, поздравляю - сетевая связанность присутствует.
