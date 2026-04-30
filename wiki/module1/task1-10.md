@@ -30,7 +30,7 @@ apt-get install bind bind-utils
 # HQ-SRV
 # /etc/bind/options.conf
 options {
-    directory "/var/lib/bind/zone";
+    directory "/etc/bind/zone";
     listen-on { 127.0.0.1; 192.168.100.0/28; };
     forwarders { 77.88.8.8; };
     recursion yes;
@@ -55,28 +55,34 @@ zone "100.168.192.in-addr.arpa" {
     type master;
     file "100.168.192.in-addr.arpa.db";
 };
+
+zone "200.168.192.in-addr.arpa" {
+    type master;
+    file "200.168.192.in-addr.arpa.db";
+};
 ```
 
 ## 10.3 Файл прямой зоны
 
-Создаём файл прямой зоны `/var/lib/bind/zone/au-team.irpo.db`.
+Создаём файл прямой зоны `/etc/bind/zone/au-team.irpo.db`.
 
 ```txt:line-numbers {3-18}
 # HQ-SRV
-# /var/lib/bind/zone/au-team.irpo.db
+# /etc/bind/zone/au-team.irpo.db
 $TTL 1D
-@       IN      SOA     hq-srv.au-team.irpo. admin.au-team.irpo. (
+@       IN      SOA     hq-srv admin.au-team.irpo. (
                         2026042401      ; serial
                         1H              ; refresh
                         30M             ; retry
                         1W              ; expire
                         1D )            ; minimum
 ;
+
 @       IN      NS      hq-srv.au-team.irpo.
 hq-rtr  IN      A       192.168.100.1
 hq-srv  IN      A       192.168.100.2
-br-rtr  IN      A       192.168.0.1
-br-srv  IN      A       192.168.0.2
+br-rtr  IN      A       192.168.3.1
+br-srv  IN      A       192.168.3.2
 hq-cli  IN      A       192.168.200.2
 ```
 
@@ -86,11 +92,11 @@ hq-cli  IN      A       192.168.200.2
 
 ## 10.4 Файл обратной зоны
 
-Создаём файл обратной зоны `/var/lib/bind/zone/100.168.192.in-addr.arpa.db`.
+Создаём файл обратной зоны `/etc/bind/zone/100.168.192.in-addr.arpa.db`.
 
 ```txt:line-numbers {3-14}
 # HQ-SRV
-# /var/lib/bind/zone/100.168.192.in-addr.arpa.db
+# /etc/bind/zone/100.168.192.in-addr.arpa.db
 $TTL 1D
 @       IN      SOA     hq-srv.au-team.irpo. admin.au-team.irpo. (
                         2026042401      ; serial
