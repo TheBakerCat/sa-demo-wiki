@@ -38,7 +38,7 @@ subnet 192.168.200.0 netmask 255.255.255.248 {
     option subnet-mask 255.255.255.248;
     option domain-name "au-team.irpo";
     option domain-name-servers 192.168.100.2;
-    range 192.168.200.2 192.168.200.6;
+    range dynamic-bootp 192.168.200.2 192.168.200.6;
 }
 ```
 

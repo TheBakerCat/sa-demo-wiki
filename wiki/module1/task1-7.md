@@ -65,8 +65,8 @@ router ospf
  ospf router-id 1.1.1.1
  network 10.0.0.0/30 area 0
  network 192.168.100.0/28 area 0
- network 192.168.200.0/29 area 0
- network 192.168.99.0/28 area 0
+ network 192.168.200.0/28 area 0
+ network 192.168.99.0/29 area 0
 exit
 
 int GRE1
@@ -81,7 +81,7 @@ exit
 ```
 
 ::: info
-* `passive-interface` — запрещает отправку OSPF-пакетов на указанном интерфейсе, при этом сеть интерфейса всё равно анонсируется
+* `ip ospf passive` — запрещает отправку OSPF-пакетов на указанном интерфейсе, при этом сеть интерфейса всё равно анонсируется
 * `ip ospf network point-to-point` — задаёт тип сети point-to-point на GRE-интерфейсе, что ускоряет установление соседства
 * `ip ospf authentication message-digest` — включает MD5-аутентификацию на интерфейсе для защиты протокола
 :::
@@ -108,7 +108,7 @@ exit
 router ospf
  ospf router-id 2.2.2.2
  network 10.0.0.0/30 area 0
- network 192.168.0.0/27 area 0
+ network 192.168.3.0/28 area 0
 exit
 
 int GRE1

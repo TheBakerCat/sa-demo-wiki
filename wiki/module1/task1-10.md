@@ -55,11 +55,6 @@ zone "100.168.192.in-addr.arpa" {
     type master;
     file "100.168.192.in-addr.arpa.db";
 };
-
-zone "200.168.192.in-addr.arpa" {
-    type master;
-    file "200.168.192.in-addr.arpa.db";
-};
 ```
 
 ## 10.3 Файл прямой зоны
@@ -71,11 +66,11 @@ zone "200.168.192.in-addr.arpa" {
 # /etc/bind/zone/au-team.irpo.db
 $TTL 1D
 @       IN      SOA     hq-srv admin.au-team.irpo. (
-                        2026042401      ; serial
-                        1H              ; refresh
-                        30M             ; retry
-                        1W              ; expire
-                        1D )            ; minimum
+                        2026042401
+                        1H
+                        30M
+                        1W
+                        1D )
 ;
 
 @       IN      NS      hq-srv.au-team.irpo.
@@ -99,11 +94,11 @@ hq-cli  IN      A       192.168.200.2
 # /etc/bind/zone/100.168.192.in-addr.arpa.db
 $TTL 1D
 @       IN      SOA     hq-srv.au-team.irpo. admin.au-team.irpo. (
-                        2026042401      ; serial
-                        1H              ; refresh
-                        30M             ; retry
-                        1W              ; expire
-                        1D )            ; minimum
+                        2026042401
+                        1H
+                        30M
+                        1W
+                        1D )
 ;
 @       IN      NS      hq-srv.au-team.irpo.
 1       IN      PTR     hq-rtr.au-team.irpo.
@@ -125,7 +120,7 @@ named-checkconf
 ```
 
 ```shell
-named-checkzone au-team.irpo /var/lib/bind/zone/au-team.irpo.db
+named-checkzone au-team.irpo /etc/bind/zone/au-team.irpo.db
 ```
 
 Проверяем разрешение имён.
