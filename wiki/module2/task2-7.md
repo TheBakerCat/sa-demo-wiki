@@ -22,3 +22,29 @@ apache
 • Запустите веб сервер и убедитесь в работоспособности приложения
 
 • Основные параметры отметьте в отчёте
+
+::: info
+для этого задание необходимо также пробросить образ Additional.iso, но уже на машину HQ-SRV
+:::
+
+```Shell
+apt-get install lamp-server -y
+```
+Если у вас какие-то проблемы с установкой пакетов, необходимо прописать команду apt-get update
+
+Монтируем образ
+```Shell
+mount /dev/sr0 /mnt/
+
+cp /mnt/web/index.php /var/www/html/
+cp /mnt/web/logo.png /var/www/html/
+```
+
+Заходим в файл `/var/www/html/index.php`
+и изменяем параметры:
+```txt:line-numbers
+$servername = "localhost";
+$username = "webc";
+$password = "P@ssw0rd";
+$dbname = "webdb";
+```
