@@ -18,7 +18,34 @@ P@ssw0rd, порт приложения 8080, при необходимости 
 • Приложение должно быть доступно для внешних подключений через
 порт 8080
 
-устанавливаем нужные пакеты:
+::: info
+Чтобы выполнить это задание вам необходимо пробросить iso образ Aditional в машину BR-SRV
+:::
+Устанавливаем нужные пакеты:
+
+```Shell
+apt-get update && apt-get install docker-engine docker-compose -y
+```
+
+```Shell
+systemctl enable --now docker
+```
+Далее нам необходимо смонтировать нужные образы для дальнейшей загрузки в docker
+
+```Shell
+mount /dev/sr0 /mnt/
+
+docker load -i /mnt/docker/site_latest.tar
+docker load -i /mnt/docker/mariadb_latest.tar
+```
+Проверить успешность загрузки можно посредством выполнения команды
+
+```Shell
+docker images
+```
+
+
+
 
 <!--
 Services:
