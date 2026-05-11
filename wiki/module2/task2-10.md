@@ -23,7 +23,7 @@ htpasswd -c /etc/nginx/.htpasswd WEB
 вписываем пароль P@ssw0rd 2 раза
 далее заходим в файл `/etc/nginx/sites-available.d/default.conf`
 добавляем
-```txt:line-numbers
+```python:line-numbers
 server {
     listen 80;
     server_name web.au-team.irpo;
