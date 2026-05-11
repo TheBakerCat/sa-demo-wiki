@@ -18,14 +18,20 @@
 группы права не имеют.
 
 :::
-## 1. Запуск и первичная настройка samba
+## 1. Запуск и первичная настройка samba на BR-SRV
 
 Устанавливаем samba
 
 ```python:line-numbers
-apt-get install task-samba-dc
+apt-get install task-samba-dc -y
 ```
-
+Прописываем следующие команды:
+```python
+rm -f  /etc/samba/smb.conf
+rm -rf /var/lib/samba/
+rm -rf /var/cache/samba/
+mkdir -p /var/lib/samba/sysvol
+```
 Запускаем программу настройки
 
 ```
@@ -46,11 +52,17 @@ Domain [au-team]:
 Server Role (dc, member, standalone) [dc]:
 
 DNS backend (SAMBA_INTERNAL, BIND9_FLATFILE, BIND9_DLZ, NONE) [SAMBA_INTERNAL]:
-```
 
-Здесь прописываем ip адрес нашего локального dns сервера(ip hq-srv):
+DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:
+
 ```
-DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:ip hq-srv
+когда доходит до ввода пароля, вписываем P@ssw0rd два раза
+
+далее настраиваем kerberos
+```Shell
+cp /var/lib/samba/private/krb5.conf /etc/krb5.conf
+
+overwrite: y
 ```
 
 Ставим программу на автозапуск и запускаем
@@ -58,8 +70,72 @@ DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:ip hq-
 ```
  systemctl enable --now samba
 ```
+прописываем в `/etc/net/ifaces/ens18/resolv.conf`
+```Shell
+search au-team.irpo
+nameserver 127.0.0.1
+```
+в `/etc/samba/smb.conf` будет прописан forwarders на HQ-SRV так что bind из-за этого не сломается
+
+```Shell
+systemctl restart network
+```
+
+создаем группу пользователей hq
+
+```Shell
+for i in {1..5}; do
+>samba-tool user add hquser$i P@ssw0rd;
+>samba-tool user setexpiry hquser$i --noexpiry;
+>samba-tool group addmembers "hq" hquser$i;
+>done
+```
+если при создании пользователей не будет никаких ошибок то вы все прописали правильно
+проверить можно с помощью команд:
+
+```Shell
+samba-tool group listmembers hq
+kinit Administrator
+klist
+```
+
+Далее в hq-rtr заходим в конфигурационный файл `/etc/dhcp/dhcpd.conf`
+меняем здесь:
+```python:line-numbers
+# See dhcpd.conf(5) for further configuration
+
+ddns-update-style none;
+
+subnet 192.168.200.0 netmask 255.255.255.240 {
+    option routers                  192.168.200.1;
+    option subnet-mask              255.255.255.240;
+
+    option nis-domain               "domain.org";
+    option domain-name              "au-team.irpo";
+    option domain-name-servers      192.168.100.2; # [!code --]
+    option domain-name-servers      192.168.3.2; # [!code ++]
+
+    range dynamic-bootp 192.168.200.2 192.168.200.7;
+    default-lease-time 21600;
+    max-lease-time 43200;
+}
+```
+
+Чтобы настройки применились перезапускаем службу dhcpd
+
+```Shell
+systemctl restart dhcpd
+```
 
 ## 2. Введение в созданный домен машину HQ-CLI
+
+соответственно для того чтобы HQ-CLI нашла контроллер домена, нужно перезапустить службу network
+
+```Shell
+systemctl restart network
+```
+Далее:
+
 Заходим на HQ-CLI --> Меню(снизу слева) --> Раздел Приложения --> Администрирование --> Центр управления системой --> Раздел Пользователи --> Аутентификация
 
 Выбираем пункт Домен Active Directory
@@ -68,22 +144,20 @@ DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:ip hq-
 
 Листаем вниз и нажимаем применить
 
-## 3. Создание 5 пользователей для офиса HQ
+далее нужно прописать права для пользователей группы hq
+```Shell
+roleadd hq wheel
+```
 
-Создаём пользавтелей
+далее заходим в файл по пути nano /etc/sudoers.d/hq
 
-samba-tool user add hquser1 Aaaa123
 
-samba-tool user add hquser2 Aaaa123
+вставляем в этот файл
+```Shell
+Cmnd_Alias SHELLCMD = /bin/cat, /bin/grep, /usr/bin/id  
+  
+WHEEL_USERS ALL=(ALL:ALL) SHELLCMD
+```
+на этом конфигурация samba ⚡⚡⚡ВСЁ⚡⚡⚡
 
-samba-tool user add hquser3 Aaaa123
 
-samba-tool user add hquser4 Aaaa123
-
-samba-tool user add hquser5 Aaaa123
-
-Теперь создадим группу и поместим туда созданных пользователей:
-
-samba-tool group add hq
-
-samba-tool group addmembers hq hquser1,hquser2,hquser3,hquser4,hquser5
