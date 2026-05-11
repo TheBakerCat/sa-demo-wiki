@@ -43,46 +43,55 @@ docker load -i /mnt/docker/mariadb_latest.tar
 ```Shell
 docker images
 ```
+Создаем файл по пути /root/compose.yaml
 
+::: info
+Учтите что docker не простит вам если вы не будете соблюдать табуляцию
+:::
+```txt:line-numbers
+services:
+  database:
+    container_name: db
+    image: mariadb:10.11
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: testc
+      MARIADB_PASSWORD: P@ssw0rd
+      MARIADB_ROOT_PASSWORD: root
+#на пользователях ДЭ пароль будет другой учитывайте это а не слепо копируйте
+  app:
+    container_name: tespapp
+#название контейнера правильное, в задании написано, что основной контейнер testapp должен называться tespapp
+#при дальнейшей настройки docker это может ввести вас в заблуждение
+    image: site:latest
+    restart: always
+    ports:
+      - "8080:8000"
+    environment:
+      DB_TYPE: maria
+      DB_HOST: 192.168.3.2
+      DB_PORT: "3306"
+      DB_NAME: testdb
+      DB_USER: testc
+      DB_PASS: P@ssw0rd
+    depends_on:
+      - database
+```
 
+Прописываем команду
+```Shell
+docker compose up -d
+```
 
+если у вас вышли какие то ошибки, скорее всего они связанны с конфигом, в этом вам может помочь команды
+```Shell
+docker logs -f tespapp
+```
+Далее смотрим команду docker compose ps, важно, чтобы в столбе PORTS не было пусто, если у вас ничего нет а контейнеры уходят в restart, значит, у вас ошибка конфигурации
 
-<!--
-Services:
-testapp:
-db:
-container_name: testapр
-image: site
-restart: always
-networks:
-- testnet
-ports:
-- "8080:8000"
-environment:
-DB_HOST: db
-DB_PORT: 3306
-DB_TYPE: maria
-DB_NAME: mariadb
-DB_USER: maria
-DB_PASS: Password
-container_name: db
-image: mariadb
-networks:
-- testnet
-ports:
-- "3306:3306"
-environment:
-MARIADB_USER: maria
-MARIADB_PASSWORD: Password
-MARIADB_DATABASE: mariadb
-MARIADB_ROOT_PASSWORD: Password
-restart: unless-stopped
-networks:
-Tasks
-Cluster log
-• Поиск
+Идем на машину HQ-CLI и вписываем в адресную строку браузера 192.168.3.2:8080
 
-testnet:
-driver: bridge
-internal: true
--->
+Если у вас появился сайт, значит вы прекрасны
