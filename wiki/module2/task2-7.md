@@ -48,3 +48,44 @@ $username = "webc";
 $password = "P@ssw0rd";
 $dbname = "webdb";
 ```
+```Shell
+systemctl enable --now mariadb
+
+mariadb -u root
+```
+
+В появившемся поочередно прописываем:
+```Shell
+CREATE DATABASE webdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE USER 'webc'@'localhost' IDENTIFIED BY 'P@ssw0rd';
+
+GRANT ALL PRIVILEGES ON webdb.* TO 'webc'@'localhost';
+
+FLUSH PRIVILEGES;
+
+EXIT;
+```
+
+Запускаем веб-сервер apache
+
+```Shell
+systemctl enable --now httpd2
+```
+
+```Shell
+mariadb -u webc -p webdb < /mnt/web/dump.sql
+```
+Попросит ввести пароль, если все правильно то никаких ошибок не будет
+
+Далее заходим на машину HQ-CLI и вписываем в адресную строку браузера 192.168.100.2
+
+Появилась еще одна морда? двигаемся дальше
+
+
+
+
+
+
+
+
