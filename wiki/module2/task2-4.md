@@ -13,13 +13,27 @@
 ## 1. Настройка сервера 
 Открываем файл /etc/chrony.conf на машине ISP
 
+скачиваем
+
+```Shell
+apt-get install chrony -y
+```
+
+прописываем
+
+```
+sed -i 's/^pool/#pool/' /etc/chrony.conf
+```
+
+переходим в файл `/etc/chrony.conf`
+
 Меняет строчку local stratum 10 на local stratum 5
 
 После чего добавляем строчки:
 
 ```
-alllow 0.0.0.0/0
-manual
+server ntp0.ntp-servers.net iburst prefer minstratum 4
+allow 0.0.0.0/0
 ```
 
 Перезагружаем chronyd
@@ -28,24 +42,18 @@ manual
 systemctl restart chronyd
 ```
 
-## 2. Настройка клиента
+## 2. Настройка машин
 
-Открываем файл /etc/chrony.conf
-
-После чего добавляем строчку:
-
+прописываем на всех машинах
 ```
-pool "IP адресс ISP"
-```
+apt-get update && apt-get install chrony -y
 
-Перезагружаем chronyd
-
-```
+sed -i 's/^pool/#pool/' /etc/chrony.conf
+echo "server 172.16.1.1 iburst" >> /etc/chrony.conf
 systemctl restart chronyd
 ```
 
-Делаем тоже самой на каждой из следуйших машин: HQ-SRV, HQ-CLI, BR-RTR, BR-
-SRV.
+Для машин BR-RTR BR-SRV сервер будет 172.16.2.1 Для HQ-SRV HQ-CLI HQ-RTR сервер будет 172.16.1.1 соответственно
 
 ## 3. Проверка
 
