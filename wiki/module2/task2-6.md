@@ -58,7 +58,7 @@ services:
       - "3306:3306"
     environment:
       MARIADB_DATABASE: testdb
-      MARIADB_USER: testc
+      MARIADB_USER: test
       MARIADB_PASSWORD: P@ssw0rd
       MARIADB_ROOT_PASSWORD: root
 #на пользователях ДЭ пароль будет другой учитывайте это а не слепо копируйте
@@ -75,14 +75,14 @@ services:
       DB_HOST: 192.168.3.2
       DB_PORT: "3306"
       DB_NAME: testdb
-      DB_USER: testc
+      DB_USER: test
       DB_PASS: P@ssw0rd
     depends_on:
       - database
 ```
 
 Прописываем команду
-```Shell
+```python
 docker compose up -d
 ```
 
