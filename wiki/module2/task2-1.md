@@ -81,15 +81,22 @@ nameserver 127.0.0.1
 systemctl restart network
 ```
 
-создаем группу пользователей hq
 
+
+создаём группу пользователей hq
+
+```Shell
+samba-tool group add hq
+```
+
+создаём и добавляем пользователей в группу 
 ```Shell
 for i in {1..5}; do
 >samba-tool user add hquser$i P@ssw0rd;
 >samba-tool user setexpiry hquser$i --noexpiry;
 >samba-tool group addmembers "hq" hquser$i;
 >done
-```
+
 если при создании пользователей не будет никаких ошибок то вы все прописали правильно
 проверить можно с помощью команд:
 
