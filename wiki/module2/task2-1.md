@@ -1,4 +1,4 @@
-# Настройте контроллер домена Samba DC на сервере BR-SRV:
+<img width="633" height="22" alt="изображение" src="https://github.com/user-attachments/assets/d1f5267e-e5f3-4bdb-8da2-2c6518dc077a" /># Настройте контроллер домена Samba DC на сервере BR-SRV:
 
 ::: details Задания
 
@@ -52,7 +52,7 @@ samba-tool domain provision
 Realm: au-team.irpo
 ```
 
-Далее пропускаем всё с помощью Enter
+Далее пропускаем всё с помощью Enter, кроме строчки с параметром DNS forwarder и паролем
 
 ```
 Domain [au-team]:
@@ -60,6 +60,10 @@ Domain [au-team]:
 Server Role (dc, member, standalone) [dc]:
 
 DNS backend (SAMBA_INTERNAL, BIND9_FLATFILE, BIND9_DLZ, NONE) [SAMBA_INTERNAL]:
+```
+в строчке DNS forwarder прописываем адресс любого публичного DNS сервера(1.1.1.1: 8.8.8.8; 77.88.8.8)
+```
+DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]: адрес любого DNS
 ```
 когда доходит до ввода пароля, вписываем P@ssw0rd два раза
 
