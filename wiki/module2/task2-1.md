@@ -32,10 +32,11 @@ rm -rf /var/lib/samba/
 rm -rf /var/cache/samba/
 mkdir -p /var/lib/samba/sysvol
 ```
-Меняем DNS
-```
-cd /etc/net/ifaces/ens18
-vim resolv.conf
+
+Перед запуском обязательно меняем DNS
+`/etc/net/ifaces/ens18/resolv.conf`
+```Shell
+search au-team.irpo
 nameserver 127.0.0.1
 ```
 
@@ -74,11 +75,7 @@ overwrite: y
 ```
  systemctl enable --now samba
 ```
-прописываем в `/etc/net/ifaces/ens18/resolv.conf`
-```Shell
-search au-team.irpo
-nameserver 127.0.0.1
-```
+
 в `/etc/samba/smb.conf` будет прописан forwarders на HQ-SRV так что bind из-за этого не сломается
 
 ```Shell
