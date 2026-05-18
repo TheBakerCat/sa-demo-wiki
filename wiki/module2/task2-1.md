@@ -76,15 +76,7 @@ overwrite: y
  systemctl enable --now samba
 ```
 
-в `/etc/samba/smb.conf` будет прописан forwarders на HQ-SRV так что bind из-за этого не сломается
-
-```Shell
-systemctl restart network
-```
-
-
-
-создаём группу пользователей hq
+cоздаём группу пользователей hq
 
 ```Shell
 samba-tool group add hq
