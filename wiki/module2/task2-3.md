@@ -21,8 +21,12 @@ mkdir /raid/nfs
 chmod -R 777 /raid/nfs
 ```
 Открываем файл `/etc/exports` и пишем в нем:
-```
+<!--
+Возможно надо так, но у меня и без no_root_squash завелось
 /raid/nfs 192.168.200.0/28(rw,no_root_squash)
+-->
+```
+/raid/nfs 192.168.200.0/28(rw)
 ```
 ```Shell
 exportfs -arv
@@ -40,8 +44,14 @@ chmod -R 777 /mnt/nfs
 
 Далее заходим в файл /etc/fstab
 прописываем в новой строчке
-```txt
+
+<!--
+Возможно надо так, но у меня и без ,_netdev завелось
 192.168.100.2:/raid/nfs /mnt/nfs nfs defaults,_netdev 0 0
+-->
+
+```txt
+192.168.100.2:/raid/nfs /mnt/nfs nfs defaults 0 0
 ```
 после этого можем проверить подключился ли диск командой
 ```
