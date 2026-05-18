@@ -18,7 +18,7 @@
 группы права не имеют.
 
 :::
-## 1. Запуск и первичная настройка samba на BR-SRV
+## 1. Подготовка к запуску и первичная настройка Samba на BR-SRV
 
 Устанавливаем samba
 
@@ -32,6 +32,13 @@ rm -rf /var/lib/samba/
 rm -rf /var/cache/samba/
 mkdir -p /var/lib/samba/sysvol
 ```
+Меняем DNS
+```
+cd /etc/net/ifaces/ens18
+vim resolv.conf
+nameserver 127.0.0.1
+```
+
 Запускаем программу настройки
 
 ```
@@ -44,7 +51,7 @@ samba-tool domain provision
 Realm: au-team.irpo
 ```
 
-Далее пропускаем всё с помощью Enter
+Далее пропускаем всё с помощью Enter, кроме строчки DNS forwarder ip address и Administrator password 
 
 ```
 Domain [au-team]:
@@ -52,9 +59,10 @@ Domain [au-team]:
 Server Role (dc, member, standalone) [dc]:
 
 DNS backend (SAMBA_INTERNAL, BIND9_FLATFILE, BIND9_DLZ, NONE) [SAMBA_INTERNAL]:
-
-DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]:
-
+```
+прописываем здесь адрес любого публичного DNS сервера(1.1.1.1 или 8.8.8.8 или 77.88.8.8)
+```
+DNS forwarder IP address (write 'none' to disable forwarding) [127.0.0.1]: "адрес DNS сервера"
 ```
 когда доходит до ввода пароля, вписываем P@ssw0rd два раза
 
