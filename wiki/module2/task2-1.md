@@ -90,6 +90,8 @@ samba-tool group add hq
 ```
 
 создаём и добавляем пользователей в группу 
+
+скрипт для автоматического создания
 ```Shell
 for i in {1..5}; do
 >samba-tool user add hquser$i P@ssw0rd;
