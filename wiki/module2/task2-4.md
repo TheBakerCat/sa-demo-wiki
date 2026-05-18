@@ -18,16 +18,28 @@
 ```Shell
 apt-get install chrony -y
 ```
-
+<!--
 прописываем
 
 ```
 sed -i 's/^pool/#pool/' /etc/chrony.conf
 ```
+-->
 
 переходим в файл `/etc/chrony.conf`
 
-Меняет строчку local stratum 10 на local stratum 5
+Меняет строчки
+
+```python:line-numbers
+local stratum 10 # [!code --]
+local stratum 5 # [!code ++]
+```
+Коментируем
+
+```python:line-numbers
+pool pool.ntp.org iburst # [!code --]
+#pool pool.ntp.org iburst # [!code ++]
+```
 
 После чего добавляем строчки:
 
@@ -45,11 +57,28 @@ systemctl restart chronyd
 ## 2. Настройка машин
 
 прописываем на всех машинах
-```
-apt-get update && apt-get install chrony -y
 
-sed -i 's/^pool/#pool/' /etc/chrony.conf
-echo "server 172.16.1.1 iburst" >> /etc/chrony.conf
+```python:line-numbers
+apt-get update && apt-get install chrony -y
+```
+
+редактируем  /etc/chrony.conf
+
+Комментируем
+
+```python:line-numbers
+pool pool.ntp.org iburst # [!code --]
+#pool pool.ntp.org iburst # [!code ++]
+```
+Добавляем строки
+
+```python:line-numbers
+server 172.16.1.1 iburst
+```
+
+Перезагружаем chronyd
+
+```python:line-numbers
 systemctl restart chronyd
 ```
 
