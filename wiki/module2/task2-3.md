@@ -25,7 +25,7 @@ chmod -R 777 /raid/nfs
 /raid/nfs 192.168.200.0/28(rw,no_root_squash)
 ```
 ```Shell
-exports -arv
+exportfs -arv
 systemctl enable --now nfs-server
 ```
 
