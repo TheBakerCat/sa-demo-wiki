@@ -20,7 +20,7 @@
 :::
 ## 1. Запуск и первичная настройка Samba на BR-SRV
 
-Устанавливаем samba
+Устанавливаем Samba
 
 ```python:line-numbers
 apt-get install task-samba-dc -y
