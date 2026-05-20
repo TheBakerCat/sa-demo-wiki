@@ -72,8 +72,8 @@ services:
       - "8080:8000"
     environment:
       DB_TYPE: maria
-      DB_HOST: 192.168.3.2
-      DB_PORT: "3306"
+      DB_HOST: database
+      DB_PORT: 3306
       DB_NAME: testdb
       DB_USER: test
       DB_PASS: P@ssw0rd
@@ -83,7 +83,7 @@ services:
 
 Прописываем команду
 ```python
-docker compose up -d
+docker compose -f /root/compose.yaml up -d
 ```
 
 если у вас вышли какие то ошибки, скорее всего они связанны с конфигом, в этом вам может помочь команды
@@ -95,3 +95,13 @@ docker logs -f tespapp
 Идем на машину HQ-CLI и вписываем в адресную строку браузера 192.168.3.2:8080
 
 Если у вас появился сайт, значит вы прекрасны
+
+Если не сработало, выключаете все контейнеры 
+```Shell
+docker compose -f /root/compose.yaml down
+```
+Очищяйте базы 
+```Shell
+docker volume prune
+```
+После этого можите переписывать compose.yaml и заново запускать
