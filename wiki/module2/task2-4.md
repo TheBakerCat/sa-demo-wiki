@@ -34,19 +34,6 @@ sed -i 's/^pool/#pool/' /etc/chrony.conf
 local stratum 10 # [!code --]
 local stratum 5 # [!code ++]
 ```
-Коментируем
-
-```python:line-numbers
-pool pool.ntp.org iburst # [!code --]
-#pool pool.ntp.org iburst # [!code ++]
-```
-
-После чего добавляем строчки:
-
-```
-server ntp0.ntp-servers.net iburst prefer minstratum 4
-allow 0.0.0.0/0
-```
 
 Перезагружаем chronyd
 
