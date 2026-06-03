@@ -32,7 +32,7 @@ sed -i 's/^pool/#pool/' /etc/chrony.conf
 
 ```python:line-numbers
 local stratum 10 # [!code --]
-local stratum 5 # [!code ++]
+local stratum 8 # [!code ++]
 ```
 
 Перезагружаем chronyd
